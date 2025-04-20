@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--预定义导航栏内容，而不先定义导航和页面-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/a0SettingFrag"
+        android:title="系统设定" />
+    <item
+        android:id="@+id/b0WorkStatusFrag"
+        android:title="工作状态" />
+    <item
+        android:id="@+id/c0FaultDetectionFrag"
+        android:title="故障检测" />
+    <item
+        android:id="@+id/d0UnitInfoFrag"
+        android:title="机组信息" />
+    <item
+        android:id="@+id/f0UsingHelpFrag"
+        android:title="使用帮助" />
+</menu>
