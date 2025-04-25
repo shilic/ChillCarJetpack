@@ -1,33 +1,42 @@
 buildscript {
     repositories {
-        //maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        google()
+        mavenCentral()
         maven { url 'https://maven.aliyun.com/repository/public/' }
         maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-        //maven { url 'https://nexus.web.cern.ch/nexus/content/repositories/public/'}
-        google()
-        mavenCentral()
     }
     dependencies {
-        // classpath 'com.android.tools.build:gradle:8.0.2'
+        classpath 'com.android.tools.build:gradle:8.0.2'
         // 其他依赖项
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22'  // Kotlin 插件
+        // 添加 Hilt 插件
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.46.1'
     }
 }
 
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    // 添加 Hilt 插件 // 用于 Room、Hilt 等注解处理
+    id "org.jetbrains.kotlin.kapt" version "1.3.72"
+    // Hilt 插件
+    //id 'com.google.devtools.ksp'
+    id 'com.google.dagger.hilt.android' version '2.46.1' apply false
 }
 
 android {
     namespace 'com.QL.CentralControlSystem'
+    // 确保 compileSdk 至少为 34
     compileSdk 34
 
     buildFeatures {
         viewBinding true
+        // dataBinding true
     }
     defaultConfig {
         applicationId "com.QL.CentralControlSystem"
+        // 最低支持版本建议 ≥ API 21
         minSdk 29
         targetSdk 35
         versionCode 1
@@ -43,40 +52,52 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        //sourceCompatibility JavaVersion.VERSION_1_8
+        //targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17  // 统一为 Java 17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        //jvmTarget = '1.8'
+        jvmTarget = '17'  // Kotlin 目标版本同步为 17
     }
 }
 
 dependencies {
+    // 我的框架
     implementation files('libs/QuickCanResolver.jar')
+
     // jetpack
     // 添加 Fragment KTX 扩展库
     implementation 'androidx.fragment:fragment-ktx:1.6.2' // 使用最新稳定版本
-    // Lifecycle
-//    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
-//    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
+
+    // ====== Lifecycle & ViewModel ======
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
 //    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
-    // Navigation
-    implementation "androidx.navigation:navigation-fragment-ktx:2.6.0"
-    implementation "androidx.navigation:navigation-ui-ktx:2.6.0"
-    // Room
-//    implementation 'androidx.room:room-runtime:2.5.2'
-//    implementation 'androidx.room:room-ktx:2.5.2'
-//    //kapt 'androidx.room:room-compiler:2.5.2'
-//    annotationProcessor "androidx.room:room-compiler:2.5.2"
+
+    // ====== Navigation 导航 ======
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
+
+    // ====== Room 数据库 ======
+    implementation 'androidx.room:room-ktx:2.5.2'
+    // Could not find method kapt() for arguments [androidx.room:room-compiler:2.5.2] on object of type org.gradle.api.internal.artifacts.dsl.dependencies.DefaultDependencyHandler.
+    kapt 'androidx.room:room-compiler:2.5.2'
+
+
+    // ====== Hilt 依赖注入 ======
+    //implementation 'com.google.dagger:hilt-android:2.46.1'
+    //kapt 'com.google.dagger:hilt-compiler:2.46.1'
+
 //    // WorkManager
 //    implementation "androidx.work:work-runtime-ktx:2.8.1"
 //    implementation "androidx.paging:paging-runtime-ktx:3.2.1"
 //    implementation "androidx.preference:preference-ktx:1.2.1"
 
-
-    //implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
+    // ====== 核心库 ====== or 1.8.0  ?
+    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     testImplementation 'junit:junit:4.13.2'
