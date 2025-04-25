@@ -1,32 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background_night"
     android:orientation="vertical"
-    android:background="@drawable/background_night">
+    android:paddingTop="8dp"
+    android:scrollbarSize="6dp">
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/top_bar_frag"
+        android:name="com.QL.CentralControlSystem.bar.TopFragment"
         android:layout_width="match_parent"
         android:layout_height="90dp"
-        android:name="com.QL.CentralControlSystem.bar.TopFragment"
-        tools:layout="@layout/fragment_top"
-        />
+        tools:layout="@layout/fragment_top" />
 
     <LinearLayout
         android:id="@+id/main_contents"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
         <!-- 左侧导航栏 -->
         <com.google.android.material.navigationrail.NavigationRailView
             android:id="@+id/navigation_rail"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:layout_marginHorizontal="0dp"
+            android:background="#0DB6B9BC"
+            android:backgroundTintMode="src_in"
+            android:clickable="false"
+            android:labelFor="@id/nav_host_fragment"
+            android:measureAllChildren="true"
+            android:outlineAmbientShadowColor="#575454"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="5dp"
+            android:scrollbars="vertical"
+            android:textAlignment="gravity"
+            android:touchscreenBlocksFocus="false"
+            app:itemRippleColor="#525455"
+            app:itemTextColor="#CCCACA"
+            app:labelVisibilityMode="labeled"
             app:menu="@menu/nav_rail_menu" />
         <!-- 主内容区域 -->
         <androidx.fragment.app.FragmentContainerView
@@ -37,7 +52,6 @@
             app:defaultNavHost="true"
             app:navGraph="@navigation/nav_graph" />
     </LinearLayout>
-
 
 
 </LinearLayout>
