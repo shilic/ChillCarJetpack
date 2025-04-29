@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         // 1. 获取碎片容器
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        //val navHostFragment = binding.navHostFragment as NavHostFragment // 这句报错
         // 2. 获取导航控制器
         val navController = navHostFragment.navController
         // 3. 关键步骤：绑定。以下是绑定步骤 binding.activityBottom findViewById<BottomNavigationView>(R.id.activity_bottom)

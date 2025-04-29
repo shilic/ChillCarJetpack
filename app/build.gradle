@@ -21,8 +21,7 @@ plugins {
     // 添加 Hilt 插件 // 用于 Room、Hilt 等注解处理
     id "org.jetbrains.kotlin.kapt" version "1.3.72"
     // Hilt 插件
-    //id 'com.google.devtools.ksp'
-    id 'com.google.dagger.hilt.android' version '2.46.1' apply false
+    id 'com.google.dagger.hilt.android' version '2.46.1' apply true
 }
 
 android {
@@ -74,7 +73,7 @@ dependencies {
     // ====== Lifecycle & ViewModel ======
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
-//    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
 
     // ====== Navigation 导航 ======
     implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
@@ -82,18 +81,17 @@ dependencies {
 
     // ====== Room 数据库 ======
     implementation 'androidx.room:room-ktx:2.5.2'
-    // Could not find method kapt() for arguments [androidx.room:room-compiler:2.5.2] on object of type org.gradle.api.internal.artifacts.dsl.dependencies.DefaultDependencyHandler.
     kapt 'androidx.room:room-compiler:2.5.2'
 
 
     // ====== Hilt 依赖注入 ======
-    //implementation 'com.google.dagger:hilt-android:2.46.1'
-    //kapt 'com.google.dagger:hilt-compiler:2.46.1'
+    implementation 'com.google.dagger:hilt-android:2.46.1'
+    kapt 'com.google.dagger:hilt-compiler:2.46.1'
 
-//    // WorkManager
-//    implementation "androidx.work:work-runtime-ktx:2.8.1"
-//    implementation "androidx.paging:paging-runtime-ktx:3.2.1"
-//    implementation "androidx.preference:preference-ktx:1.2.1"
+    // ========== WorkManager ========
+    implementation "androidx.work:work-runtime-ktx:2.8.1"
+    implementation "androidx.paging:paging-runtime-ktx:3.2.1"
+    implementation "androidx.preference:preference-ktx:1.2.1"
 
     // ====== 核心库 ====== or 1.8.0  ?
     implementation 'androidx.core:core-ktx:1.10.0'
@@ -103,6 +101,5 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-
 
 }

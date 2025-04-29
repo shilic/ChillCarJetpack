@@ -3,17 +3,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/a0SettingFrag"
-        android:title="系统设定" />
+        android:title="系统设定"
+        android:icon="@drawable/setting"
+        />
     <item
         android:id="@+id/b0WorkStatusFrag"
-        android:title="工作状态" />
+        android:title="工作状态"
+        android:icon="@drawable/status"/>
     <item
         android:id="@+id/c0FaultDetectionFrag"
-        android:title="故障检测" />
+        android:title="故障检测"
+        android:icon="@drawable/fault"/>
     <item
         android:id="@+id/d0UnitInfoFrag"
-        android:title="机组信息" />
+        android:title="机组信息"
+        android:icon="@drawable/info"/>
     <item
         android:id="@+id/f0UsingHelpFrag"
-        android:title="使用帮助" />
+        android:title="使用帮助"
+        android:icon="@drawable/help"
+        />
 </menu>
