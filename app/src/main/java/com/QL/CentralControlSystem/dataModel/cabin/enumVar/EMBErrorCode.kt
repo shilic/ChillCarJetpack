@@ -1,4 +1,4 @@
-package com.QL.CentralControlSystem.dataModel.Cabin.EnumVar
+package com.QL.CentralControlSystem.dataModel.cabin.enumVar
 
 /**
  * 故障码枚举变量

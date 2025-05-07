@@ -1,4 +1,4 @@
-package com.QL.CentralControlSystem.dataModel.Cabin.EnumVar
+package com.QL.CentralControlSystem.dataModel.cabin.enumVar
 
 /**
  * 机组信息枚举。如果有其他机组，只需要再定义这样一个相似的枚举即可

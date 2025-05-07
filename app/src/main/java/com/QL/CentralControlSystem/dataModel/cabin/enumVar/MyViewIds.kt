@@ -1,4 +1,4 @@
-package com.QL.CentralControlSystem.dataModel.Cabin.EnumVar
+package com.QL.CentralControlSystem.dataModel.cabin.enumVar
 
 import android.view.View
 

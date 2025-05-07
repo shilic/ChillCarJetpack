@@ -1,4 +1,4 @@
-package com.QL.CentralControlSystem.dataModel.Cabin.CabinType
+package com.QL.CentralControlSystem.dataModel.cabin.cabinType
 
 import android.util.Log
 import java.io.Serializable
@@ -8,56 +8,13 @@ import java.io.Serializable
  * <br></br> 基类实现了Serializable 接口，可以作为数据传输
  */
 abstract class Cabin : Serializable {
-    var isCanDataToInstance = false
-
-    /** 接收报文id  */
-    var receiveID // 0x18981824
-            : Int? = null
-
-    /** 接受到的8*8的CAN数据矩阵，共64个bit  */
-    var data = ByteArray(64) //接收到的数据
-
-    /** 整个报文 ,例如 [ AA,55,0F,C1,   24,18,98,18,  08,   02,4B,55,20,00,00,00,00,   6F, ]  */
-    var receiveFrame = ByteArray(18)
-    /* 新增 软件版本号 */
-    /** 字符串格式的软件版本号  */
-    var softwareVersionNumStr: String? = null
-
-    /** 逻辑版本第一序号 , 例如 ‘V1.4.0’版本号中的第一位‘1’  */
-    var softVersionNum1 = 0
-
-    /** 逻辑版本第二序号 , 例如 ‘V1.4.0’版本号中的第二位‘4’  */
-    var softVersionNum2 = 0
-
-    /** 程序顺序版本，在程序逻辑版本未改动的条件下，每次编程修改后，该数值+1 ; 例如 ‘V1.4.0’版本号中的第三位‘0’ */
-    var sequenceNum = 0
-
-    /** 软件型号（基本型部分）,例如 例如十进制值58，表示580中的58  */
-    var softBaseNum = 0
-
-    /** 软件型号（变型部分）, ,例如 例如十进制值0，表示580中的0  */
-    var softModifyNum = 0
-
-    /** 底盘厂家代号 , 例如17表示庆铃  */
-    var chassisFactoryNum = 0
-
-    /** 车辆型号 , 底盘规格代码号，该底盘厂家具体的底盘型号，例如1表示庆铃的新轻卡 */
-    var vehicleModel = 0
-
-    /** 上装厂家代码,冷机厂家代码。 例如1表示EMB, */
-    var cabinFactorNum = 0
-
-    init {
-        Log.d(LogTag, "上装对象实例化完成，等待写入数据。上装类型 : " + this.javaClass.simpleName)
-    }
-
     /** 得到一段报文 */
     fun compileSendData(sendId: Int): IntArray {
         throw NotImplementedError("该函数还没有实例化")
     }
 
     companion object {
-        private const val LogTag = "Cabin"
+        const val LogTag = "Cabin"
         const val emb_cabinCtrlId = 0x18FF0019
 
         /** 发送id_CCS7_ID = 0x1898_2418  */
