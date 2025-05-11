@@ -1,21 +1,21 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-buildscript {
-    repositories {
-
-        maven { url 'https://maven.aliyun.com/repository/public/' }
-        maven { url 'https://maven.aliyun.com/repository/central' }
-        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.0.2'
-        // 其他依赖项
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22'  // Kotlin 插件
-        // 添加 Hilt 插件
-        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.46.1'  // 关键修复点
-    }
-}
+//buildscript {
+//    repositories {
+//
+//        maven { url 'https://maven.aliyun.com/repository/public/' }
+//        maven { url 'https://maven.aliyun.com/repository/central' }
+//        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+//        google()
+//        mavenCentral()
+//    }
+//    dependencies {
+//        classpath 'com.android.tools.build:gradle:8.0.2'
+//        // 其他依赖项
+//        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22'  // Kotlin 插件
+//        // 添加 Hilt 插件
+//        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.46.1'  // 关键修复点
+//    }
+//}
 plugins {
     id 'com.android.application' version '8.0.2' apply false
     id 'com.android.library' version '8.0.2' apply false

@@ -64,7 +64,7 @@ android {
 
 dependencies {
     // 我的框架
-    implementation files('libs/QuickCanResolver.jar')
+    //implementation files('libs/QuickCanResolver.jar')
 
     // jetpack
     // 添加 Fragment KTX 扩展库

@@ -20,8 +20,14 @@ class MainActivity : AppCompatActivity() {
     // 1. 初始化兼容层框架
     private val canIo = CanIo.getInstance()
 
+    //var modelClazz = EMBCabin::class.java;
     // 2. 完成 数据模型的初始绑定
-    var oldModel: EMBCabin = canIo.manager.bind(EMBCabin::class.java)
+    //var oldModel: EMBCabin = canIo.manager.bind(modelClazz)
+
+    var oldModel: EMBCabin = EMBCabin()
+    init {
+        canIo.manager.bind(oldModel)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // 初始化 ViewBinding
@@ -39,12 +45,6 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         canIo.unRegisterCanListener()
     }
-
-
-
-
-
-
 
 
 
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
     companion object{
-        private const val logTag = "主活动"
+        private const val logTag = "MainActivity"
     }
 
 } // MainActivity : AppCompatActivity()

@@ -20,8 +20,9 @@ public class McuAdapter implements McuService  {
     private Can mcuCan = McuManager.getInstance().getCanInstance(); /*原始，获取到can实例*/
     private McuCanListenerImp mcuCanListenerImp ;
 
-//    public McuAdapter() {
-//    }
+    public McuAdapter() {
+        Log.d(LogTag,"适配器 McuAdapter 实例化完成。本地mcu接口实例化完成");
+    }
     /**
      * 手动 重启CAN实例 <br>
      * 下边的代码异常关键，系统曾经出现杀进程后再重启时无法正常接收报文的故障；加上了下边两行代码之后，故障消除，目的是重启CAN实例
@@ -50,7 +51,7 @@ public class McuAdapter implements McuService  {
         mcuCan = McuManager.getInstance().getCanInstance();
         /* 再重新注册。 */
         mcuCan.registerCan(mcuCanListenerImp);
-        Log.d(LogTag,"成功获取本地CAN实例，并注册");
+        Log.d(LogTag,"成功获取本地CAN实例，并注册监听事件");
     }
 
     @Override
@@ -61,15 +62,16 @@ public class McuAdapter implements McuService  {
         }
     }
     public static class McuCanListenerImp extends Can.CanListener {
+        private static final String LogTag = "McuCanListenerImp";
         CanListenService canListener ;
         private static volatile McuCanListenerImp that;
 
         private McuCanListenerImp() {
-            Log.d("McuCanListenerImp","本地监听函数实例化完成");
+            Log.d(LogTag,"本地监听函数实例化完成");
         }
         public McuCanListenerImp  addCanListener(CanListenService canListener) {
             this.canListener = canListener;
-            Log.d("McuCanListenerImp","成功添加监听事件");
+            Log.d(LogTag,"成功添加监听事件");
             return that;
         }
         /**
@@ -79,7 +81,8 @@ public class McuAdapter implements McuService  {
         public void onStatus(int cmd, Bundle bundle) {
             byte[] rawData = bundle.getByteArray(Can.CAN_STATUS_BUNDLE_CAN_DATA); /*原始，从包裹中获取CAN数据*/
             // 获取到上报的can数据 rawData :  [ AA,55,0F,C1,   24,18,98,18,  08,   11,22,33,44,55,66,77,FF,   6F, ]
-            Log.d( "接收CAN数据", "接受到原始报文 rawData : " + SLCTool.toHexString(rawData) + "准备传入函数进行解析"  )   ; /*原始*/
+            // 接受到原始报文 rawData : {AA, 55, 0F, C1, 24, 18, 98, 18, 08, 00, 01, 02, 03, 04, 05, 06, 07, 2E, }准备传入函数进行解析
+            Log.d( LogTag, "接受到原始报文 rawData : " + SLCTool.toHexString(rawData) + "准备传入函数进行解析"  )   ; /*原始*/
             // 拿到第三方的数据后， 最终回调了我自己写的监听函数。
             // 首先进行数据的解析。
             int canId = SLCTool.from4bytesToInt(Arrays.copyOfRange(rawData, 4, 8)  , SLCTool.DataType.Intel);
