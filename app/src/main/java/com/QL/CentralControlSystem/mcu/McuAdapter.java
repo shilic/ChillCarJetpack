@@ -33,7 +33,7 @@ public class McuAdapter implements McuService  {
     }
 
     @Override
-    public void nativeSend(int canId, int[] data8) {
+    public void nativeSend(int canId, byte[] data8) {
         // 最终调用了本地的方法来实现报文的发送
         //mcuCan.nativeSendCanData(canId, data8);
         int[] ReqData = {  0x67 , 0x45 , 0x23 , 0x81 ,  0x08,  0x00,0x00,0x00,0x00    ,0x00,0x00,0x00,0x00 };
@@ -90,7 +90,7 @@ public class McuAdapter implements McuService  {
             // 解码报文
             //CanIo.getInstance().manager.deCode_B(canId, data8);
             // 再回调从 Activity 传入的回调函数
-            canListener.listened(canId);
+            canListener.listened(canId,data8);
         }   //onStatus
         public static McuCanListenerImp getInstance() {
             if (that == null) {

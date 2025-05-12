@@ -61,9 +61,8 @@ class MainActivity : AppCompatActivity() {
      * 接收报文的回调函数
      */
     class CanListenImp : CanListenService {
-        override fun listened(canId: Int) {
-            super.listened(canId)
-            Log.d(logTag,"最终，主活动的监听被回调, 被监听的报文ID = ${SLCTool.toHexString(canId)}"  );
+        override fun listened(canId: Int, p1: ByteArray?) {
+            Log.d(logTag,"最终，主活动的监听被回调, 被监听的报文ID = ${SLCTool.toHexString(canId)}"  )
         }
     }
     companion object{

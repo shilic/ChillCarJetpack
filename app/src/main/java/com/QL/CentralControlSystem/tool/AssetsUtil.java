@@ -1,4 +1,4 @@
-package com.QL.CentralControlSystem.Tool;
+package com.QL.CentralControlSystem.tool;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,7 +10,6 @@ import android.os.ParcelFileDescriptor;
 import android.util.Log;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;

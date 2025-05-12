@@ -1,4 +1,4 @@
-package com.QL.CentralControlSystem.Tool;
+package com.QL.CentralControlSystem.tool;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

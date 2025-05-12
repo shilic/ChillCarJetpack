@@ -1,4 +1,4 @@
-package com.QL.CentralControlSystem.Tool;
+package com.QL.CentralControlSystem.tool;
 
 import android.content.Context;
 import android.graphics.Bitmap;
