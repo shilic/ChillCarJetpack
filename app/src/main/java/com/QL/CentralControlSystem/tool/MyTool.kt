@@ -3,7 +3,7 @@ package com.QL.CentralControlSystem.tool
 
 /**
      * 将 double 设置为一位小数
-     * @param number 你要输入的double类型数值
+     * @param dot 保留的小数点位数
      * @return 返回只保留一位小数的字符串
      */
     fun Double.toStr(dot : Int): String {

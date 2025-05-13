@@ -64,10 +64,10 @@ android {
 
 dependencies {
     // 我的框架
-    //implementation files('libs/QuickCanResolver.jar')
-    implementation files('libs/xsdmapi.jar')
-    //implementation files('libs/QuickCanResolver.jar')
-    implementation files('libs/QuickCanResolver-1.0-SNAPSHOT.jar')
+    implementation files('libs\\QuickCanResolver-1.0-SNAPSHOT-javadoc.jar')
+    implementation files('libs\\QuickCanResolver-1.0-SNAPSHOT.jar')
+    implementation files('libs\\QuickCanResolver-1.0-SNAPSHOT-sources.jar')
+    implementation files('libs\\xsdmapi.jar')
 
     // jetpack
     // 添加 Fragment KTX 扩展库
@@ -84,6 +84,8 @@ dependencies {
 
     // ====== Room 数据库 ======
     implementation 'androidx.room:room-ktx:2.5.2'
+
+
 
     kapt 'androidx.room:room-compiler:2.5.2'
 

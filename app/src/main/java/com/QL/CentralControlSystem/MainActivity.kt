@@ -23,11 +23,10 @@ class MainActivity : AppCompatActivity() {
     //var modelClazz = EMBCabin::class.java;
     // 2. 完成 数据模型的初始绑定
     //var oldModel: EMBCabin = canIo.manager.bind(modelClazz)
+    val oldModel: EMBCabin = canIo.manager.bind(EMBCabin())
 
-    var oldModel: EMBCabin = EMBCabin()
-    init {
-        canIo.manager.bind(oldModel)
-    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // 初始化 ViewBinding
