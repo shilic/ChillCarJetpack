@@ -1,0 +1,406 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: GW CCS Vector__XXX
+
+BO_ 2560107544 CCS7: 8 CCS
+ SG_ emb_switch_req : 0|1@1+ (1,0) [0|1] "" GW
+ SG_ emb_coldMode_req : 1|1@1+ (1,0) [0|1] "" GW
+ SG_ emb_warmMode_req : 2|1@1+ (1,0) [0|1] "" GW
+ SG_ emb_fanMode_req : 3|1@1+ (1,0) [0|1] "" GW
+ SG_ emb_defrost_req : 4|1@1+ (1,0) [0|1] "" GW
+ SG_ emb_sterilize_req : 5|1@1+ (1,0) [0|1] "" GW
+ SG_ emb_setValueUp_req : 6|1@1+ (1,0) [0|1] "" GW
+ SG_ emb_setValueDown_req : 7|1@1+ (1,0) [0|1] "" GW
+ SG_ emb_forceSwitch_req : 8|1@1+ (1,0) [0|1] "" GW
+ SG_ emb_normalParamSelect : 16|8@1+ (1,0) [0|255] "" GW
+ SG_ emb_advancedParamSelect : 24|8@1+ (1,0) [0|255] "" GW
+
+BO_ 2560104484 Cabin2CCS1: 8 GW
+ SG_ emb_tempSetValue : 0|8@1+ (1,-40) [-40|215] "℃" CCS
+ SG_ emb_workMode : 8|2@1+ (1,0) [0|3] "" CCS
+ SG_ emb_defrostStage : 10|2@1+ (1,0) [0|3] "" CCS
+ SG_ emb_collisionWarningSts : 12|3@1+ (1,0) [0|7] "" CCS
+ SG_ emb_sterilizeSts : 15|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_defrostIntervalA1 : 16|8@1+ (30,0) [0|7650] "min" CCS
+ SG_ emb_tempCtrlReturnTemp : 24|8@1+ (1,-40) [-40|215] "℃" CCS
+ SG_ emb_defrostMaxTimeA3 : 32|8@1+ (1,0) [0|255] "min" CCS
+ SG_ emb_defrostEndTempA4 : 40|8@1+ (1,-40) [-40|215] "℃" CCS
+ SG_ emb_warmEnable : 48|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_evaporationFanTempModeH5 : 49|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_DefrostTempDifferenceMode : 50|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_panelConfig : 51|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_dripTime : 52|4@1+ (1,0) [0|15] "min" CCS
+ SG_ emb_boxUpLimitTemp : 56|8@1+ (1,-40) [-40|215] "℃" CCS
+
+BO_ 2560170020 Cabin2CCS2: 8 GW
+ SG_ H4 : 0|8@1+ (1,-40) [-40|215] "" CCS
+ SG_ emb_boxTempCorrection : 8|8@1+ (1,-40) [-40|215] "" CCS
+ SG_ H7 : 16|8@1+ (10,0) [0|2550] "" CCS
+ SG_ H9 : 24|8@1+ (1,-40) [-40|215] "" CCS
+ SG_ H10 : 32|7@1+ (1,-40) [-40|87] "" CCS
+ SG_ H12 : 39|1@1+ (1,0) [0|1] "" CCS
+ SG_ H13 : 40|8@1+ (1,-40) [-40|215] "" CCS
+ SG_ H14 : 48|8@1+ (1,-40) [-40|215] "" CCS
+ SG_ H15 : 56|8@1+ (100,0) [0|25500] "" CCS
+
+BO_ 2560235556 Cabin2CCS3: 8 GW
+ SG_ emb_errCode : 0|8@1+ (1,0) [0|255] "" CCS
+ SG_ emb_doorSwitch : 8|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_backupPowerSts : 9|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_compSts : 10|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_ECOSts : 11|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_remoteControlSts : 12|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_collisionRadarConfig : 13|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_boxRecoveryAirTemp : 16|16@1+ (0.1,-40) [-40|6513.5] "" CCS
+ SG_ emb_relativeHumidity : 32|8@1+ (1,0) [0|255] "" CCS
+ SG_ emb_sterilizeConfig : 40|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_areaATempSensorConfig : 41|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_areaBTempSensorConfig : 42|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_areaCTempSensorConfig : 43|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_doorSwitchSensorConfig : 44|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_CCSConfig : 45|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_VCUConfig : 46|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_remoteCtrlConfig : 47|1@1+ (1,0) [0|1] "" CCS
+ SG_ emb_power_ : 56|8@1+ (0.1,0) [0|25.5] "kw" CCS
+
+BO_ 2560301092 Cabin2CCS4: 8 GW
+ SG_ emb_outsideTemp : 0|16@1+ (0.1,-40) [-40|6513.5] "" CCS
+ SG_ emb_airOutTemp : 16|16@1+ (0.1,-40) [-40|6513.5] "" CCS
+ SG_ emb_defrostTemp : 32|16@1+ (0.1,-40) [-40|6513.5] "" CCS
+ SG_ emb_compExhaustTemp : 48|16@1+ (0.1,-40) [-40|6513.5] "" CCS
+
+BO_ 2560366628 Cabin2CCS5: 8 GW
+ SG_ emb_areaAActualTemp : 0|16@1+ (0.1,-40) [-40|6513.5] "" CCS
+ SG_ emb_areaBActualTemp : 16|16@1+ (0.1,-40) [-40|6513.5] "" CCS
+ SG_ emb_areaCActualTemp : 32|16@1+ (0.1,-40) [-40|6513.5] "" CCS
+ SG_ emb_ctrlVoltage : 48|16@1+ (0.1,0) [0|6553.5] "" CCS
+
+BO_ 2560432164 Cabin2CCS6: 8 GW
+ SG_ emb_highDCVoltage : 0|16@1+ (0.1,0) [0|6553.5] "" CCS
+ SG_ emb_highDCCurrent : 16|16@1+ (0.1,0) [0|6553.5] "" CCS
+ SG_ emb_compSpeed : 32|16@1+ (1,0) [0|65535] "" CCS
+ SG_ emb_runningTime : 48|16@1+ (1,0) [0|65535] "" CCS
+
+BO_ 2560497700 Cabin2CCS7: 8 GW
+ SG_ emb_evaporatorVoltage : 0|16@1+ (0.1,0) [0|6553.5] "" CCS
+ SG_ emb_condenserVoltage : 16|16@1+ (0.1,0) [0|6553.5] "" CCS
+ SG_ emb_freqStatus : 32|8@1+ (1,0) [0|255] "" CCS
+ SG_ emb_dc_dc1_Sts : 40|4@1+ (1,0) [0|15] "" CCS
+ SG_ emb_dc_dc2_Sts : 44|4@1+ (1,0) [0|15] "" CCS
+ SG_ emb_refrigerantPressure : 48|16@1+ (0.1,0) [0|6553.5] "" CCS
+
+BO_ 2560563236 Cabin2CCS8: 8 Vector__XXX
+ SG_ pro_versionNum1 : 0|8@1+ (1,0) [0|99] "" Vector__XXX
+ SG_ pro_versionNum2 : 8|8@1+ (1,0) [0|99] "" Vector__XXX
+ SG_ pro_sequenceNum : 16|8@1+ (1,0) [0|99] "" Vector__XXX
+ SG_ pro_softwareBaseNum : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ pro_softwareModifyNum : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ pro_chassisFactoryNum : 40|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ pro_vehicleModel : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ pro_cabinFactorNum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2559897368 CCS3: 8 CCS
+
+
+CM_ BO_ 2560107544 "用于大屏控制上装冷机，同时转一份给VCU用于判断开关机。";
+CM_ SG_ 2560107544 emb_switch_req "开/关机。";
+CM_ SG_ 2560107544 emb_coldMode_req "制冷模式。";
+CM_ SG_ 2560107544 emb_warmMode_req "制热模式。";
+CM_ SG_ 2560107544 emb_fanMode_req "通风模式。";
+CM_ SG_ 2560107544 emb_defrost_req "手动除霜。";
+CM_ SG_ 2560107544 emb_sterilize_req "臭氧消毒。";
+CM_ SG_ 2560107544 emb_setValueUp_req "设定数据“+”。";
+CM_ SG_ 2560107544 emb_setValueDown_req "设定数据“-”。";
+CM_ SG_ 2560107544 emb_forceSwitch_req "强制开关机。";
+CM_ SG_ 2560107544 emb_normalParamSelect "普通参数设置状态标识。";
+CM_ SG_ 2560107544 emb_advancedParamSelect "高级参数设置状态标识。";
+
+CM_ BO_ 2560104484 "";
+CM_ SG_ 2560104484 emb_tempSetValue "设定温度。分辨率：1℃/bit 偏移量：-40℃。";
+CM_ SG_ 2560104484 emb_workMode "工作模式MS。";
+CM_ SG_ 2560104484 emb_defrostStage "除霜阶段标志，除了0之外的状态都是除霜开启。";
+CM_ SG_ 2560104484 emb_collisionWarningSts "防撞提示。";
+CM_ SG_ 2560104484 emb_sterilizeSts "臭氧消毒。";
+CM_ SG_ 2560104484 emb_defrostIntervalA1 "除霜间隔时间A1。分辨率：30min/bit 偏移量：0
+范围：30-600min。";
+CM_ SG_ 2560104484 emb_tempCtrlReturnTemp "温控回差温度A2。分辨率：1℃/bit 偏移量：-40℃
+范围：1-20℃。";
+CM_ SG_ 2560104484 emb_defrostMaxTimeA3 "除霜运行最长时间A3。分辨率：1min/bit 偏移量：0
+范围：1-60min。";
+CM_ SG_ 2560104484 emb_defrostEndTempA4 "除霜终止温度A4。分辨率：1℃/bit 偏移量：-40℃
+范围：1-30℃。";
+CM_ SG_ 2560104484 emb_warmEnable "制热功能使能H1。";
+CM_ SG_ 2560104484 emb_evaporationFanTempModeH5 "蒸发风机到温模式H5。";
+CM_ SG_ 2560104484 emb_DefrostTempDifferenceMode "除霜温差模式H8。";
+CM_ SG_ 2560104484 emb_panelConfig "面板配置H11。";
+CM_ SG_ 2560104484 emb_dripTime "滴水时间H2。分辨率：1min/bit 偏移量：0
+范围：1-10min。";
+CM_ SG_ 2560104484 emb_boxUpLimitTemp "库温设定上限温度H3。分辨率：1℃/bit 偏移量：-40℃
+范围：10-40℃。";
+
+CM_ BO_ 2560170020 "";
+CM_ SG_ 2560170020 H4 "库温设定下限温度H4。分辨率：1℃/bit 偏移量：-40℃
+范围：-35-10℃。";
+CM_ SG_ 2560170020 emb_boxTempCorrection "箱内温度校正H6。分辨率：1℃/bit 偏移量：-40℃
+范围：-10-10℃。";
+CM_ SG_ 2560170020 H7 "压缩机最短停机时间H7。分辨率：10s/bit 偏移量：0
+范围：10-240s。";
+CM_ SG_ 2560170020 H9 "当量除霜温度H9。分辨率：1℃/bit 偏移量：-40℃
+范围：1-24℃。";
+CM_ SG_ 2560170020 H10 "温差除霜最高除霜温度限制值H10。分辨率：1℃/bit 偏移量：-40℃
+范围：-15-30℃。";
+CM_ SG_ 2560170020 H12 "排气温度传感器控制喷液阀H12。0x00  关闭
+0x01  开启。";
+CM_ SG_ 2560170020 H13 "打开喷液阀的排气温度阀值H13。分辨率：1℃/bit 偏移量：-40℃
+范围：80-140℃。";
+CM_ SG_ 2560170020 H14 "关闭喷液阀的排气温度阀值H14。分辨率：1℃/bit 偏移量：-40℃
+范围：50-H13 ℃。";
+CM_ SG_ 2560170020 H15 "压缩机转速上限设置H15。分辨率：100rpm/bit 偏移量：0
+范围：1600-7200rpm。";
+
+CM_ BO_ 2560235556 "";
+CM_ SG_ 2560235556 emb_errCode "故障代码 ERR_CODE。注：多个故障出现时，循环发送；一轮故障代码发送完毕后再发送“0xFF'作为结束标志。";
+CM_ SG_ 2560235556 emb_doorSwitch "开关门状态。";
+CM_ SG_ 2560235556 emb_backupPowerSts "供电状态。";
+CM_ SG_ 2560235556 emb_compSts "压缩机运行状态。";
+CM_ SG_ 2560235556 emb_ECOSts "节能状态ECO。";
+CM_ SG_ 2560235556 emb_remoteControlSts "远程控制状态。";
+CM_ SG_ 2560235556 emb_collisionRadarConfig "防撞雷达选配。";
+CM_ SG_ 2560235556 emb_boxRecoveryAirTemp "箱内回风温度（用于表示实际温度）。分辨率0.1℃/bit 偏移量-40℃ RT1≤-40℃，显示L，RT1≥150℃，显示H。";
+CM_ SG_ 2560235556 emb_relativeHumidity "箱内相对湿度RH。分辨率1%/bit  偏移量0。";
+CM_ SG_ 2560235556 emb_sterilizeConfig "消毒功能选配。";
+CM_ SG_ 2560235556 emb_areaATempSensorConfig "温区A温度传感器选配。";
+CM_ SG_ 2560235556 emb_areaBTempSensorConfig "温区B温度传感器选配。";
+CM_ SG_ 2560235556 emb_areaCTempSensorConfig "温区C温度传感器选配。";
+CM_ SG_ 2560235556 emb_doorSwitchSensorConfig "箱门开关传感器选配。";
+CM_ SG_ 2560235556 emb_CCSConfig "中控屏配置(中控屏不处理)。";
+CM_ SG_ 2560235556 emb_VCUConfig "VCU通讯配置(中控屏不处理)。";
+CM_ SG_ 2560235556 emb_remoteCtrlConfig "自带远程模块配置(中控屏不处理)。";
+CM_ SG_ 2560235556 emb_power_ "瞬时功耗。分辨率0.1Kw/bit  偏移量0 范围0~25.5KW。";
+
+CM_ BO_ 2560301092 "";
+CM_ SG_ 2560301092 emb_outsideTemp "室外温度。分辨率0.1℃/bit 偏移量-40℃。";
+CM_ SG_ 2560301092 emb_airOutTemp "出风温度。";
+CM_ SG_ 2560301092 emb_defrostTemp "除霜温度。";
+CM_ SG_ 2560301092 emb_compExhaustTemp "压缩机排气温度。";
+
+CM_ BO_ 2560366628 "";
+CM_ SG_ 2560366628 emb_areaAActualTemp "箱内A区温度。";
+CM_ SG_ 2560366628 emb_areaBActualTemp "箱内B区温度。";
+CM_ SG_ 2560366628 emb_areaCActualTemp "箱内C区温度。";
+CM_ SG_ 2560366628 emb_ctrlVoltage "控制电压。";
+
+CM_ BO_ 2560432164 "";
+CM_ SG_ 2560432164 emb_highDCVoltage "高压直流电压。";
+CM_ SG_ 2560432164 emb_highDCCurrent "高压直流电流。";
+CM_ SG_ 2560432164 emb_compSpeed "压缩机转速。";
+CM_ SG_ 2560432164 emb_runningTime "机组累计运行时间。";
+
+CM_ BO_ 2560497700 "";
+CM_ SG_ 2560497700 emb_evaporatorVoltage "蒸发风机电压。";
+CM_ SG_ 2560497700 emb_condenserVoltage "冷凝风机电压。";
+CM_ SG_ 2560497700 emb_freqStatus "变频器INV状态标志。";
+CM_ SG_ 2560497700 emb_dc_dc1_Sts "DC-DC1状态标志。";
+CM_ SG_ 2560497700 emb_dc_dc2_Sts "DC-DC2状态标志。";
+CM_ SG_ 2560497700 emb_refrigerantPressure "制冷剂高压压力。";
+
+CM_ BO_ 2560563236 "用于描述软件版本号，注意！无法描述硬件版本号。。";
+CM_ SG_ 2560563236 pro_versionNum1 "逻辑版本第一序号。‘V1.4.0’版本号中的第一位‘1’。";
+CM_ SG_ 2560563236 pro_versionNum2 "逻辑版本第二序号。‘V1.4.0’版本号中的第二位‘4’。";
+CM_ SG_ 2560563236 pro_sequenceNum "程序顺序版本，在程序逻辑版本未改动的条件下，每次编程修改后，该数值+1。‘V1.4.0’版本号中的第三位‘0’。";
+CM_ SG_ 2560563236 pro_softwareBaseNum "软件型号（基本型部分）。例如十进制值58，表示580中的58。";
+CM_ SG_ 2560563236 pro_softwareModifyNum "软件型号（变型部分）。例如十进制值58，表示580中的0。";
+CM_ SG_ 2560563236 pro_chassisFactoryNum "底盘厂家代号。例如17表示庆铃。";
+CM_ SG_ 2560563236 pro_vehicleModel "底盘规格代码号，该底盘厂家具体的底盘型号，例如1表示庆铃的新轻卡。";
+CM_ SG_ 2560563236 pro_cabinFactorNum "冷机厂家代码。";
+
+CM_ BO_ 2559897368 "中控屏虚拟按键（整帧转发，用作心跳信号，用于和上装保持通信，鉴别设备是否存在）。";
+
+
+BA_DEF_ SG_  "GenSigStartValue" INT 0 65535;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition","NoSigSendType";
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 65535;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 65535;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "Cyclic","Event","IfActive","CE","CA";
+BA_DEF_ BU_  "NmStationAddress" HEX 0 0;
+BA_DEF_  "DBName" STRING ;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "GenSigSendType" "Cyclic";
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenMsgCycleTime" 200;
+BA_DEF_DEF_  "GenMsgSendType" "Cyclic";
+BA_DEF_DEF_  "NmStationAddress" 0;
+BA_DEF_DEF_  "DBName" "shit";
+BA_DEF_DEF_  "BusType" "CAN";
+BA_ "DBName" "BCAN_EMB";
+BA_ "GenMsgSendType" BO_ 2560107544 1;
+BA_ "GenMsgCycleTime" BO_ 2560107544 100;
+BA_ "GenMsgSendType" BO_ 2560104484 0;
+BA_ "GenMsgCycleTime" BO_ 2560104484 100;
+BA_ "GenMsgSendType" BO_ 2560170020 0;
+BA_ "GenMsgCycleTime" BO_ 2560170020 100;
+BA_ "GenMsgSendType" BO_ 2560235556 0;
+BA_ "GenMsgCycleTime" BO_ 2560235556 1000;
+BA_ "GenMsgSendType" BO_ 2560301092 0;
+BA_ "GenMsgCycleTime" BO_ 2560301092 1000;
+BA_ "GenMsgSendType" BO_ 2560366628 0;
+BA_ "GenMsgCycleTime" BO_ 2560366628 1000;
+BA_ "GenMsgSendType" BO_ 2560432164 0;
+BA_ "GenMsgCycleTime" BO_ 2560432164 1000;
+BA_ "GenMsgSendType" BO_ 2560497700 0;
+BA_ "GenMsgCycleTime" BO_ 2560497700 1000;
+BA_ "GenMsgSendType" BO_ 2560563236 0;
+BA_ "GenMsgCycleTime" BO_ 2560563236 1000;
+BA_ "GenMsgSendType" BO_ 2559897368 0;
+BA_ "GenMsgCycleTime" BO_ 2559897368 500;
+BA_ "GenSigStartValue" SG_ 2560107544 emb_switch_req 0;
+BA_ "GenSigStartValue" SG_ 2560107544 emb_coldMode_req 0;
+BA_ "GenSigStartValue" SG_ 2560107544 emb_warmMode_req 0;
+BA_ "GenSigStartValue" SG_ 2560107544 emb_fanMode_req 0;
+BA_ "GenSigStartValue" SG_ 2560107544 emb_defrost_req 0;
+BA_ "GenSigStartValue" SG_ 2560107544 emb_sterilize_req 0;
+BA_ "GenSigStartValue" SG_ 2560107544 emb_setValueUp_req 0;
+BA_ "GenSigStartValue" SG_ 2560107544 emb_setValueDown_req 0;
+BA_ "GenSigStartValue" SG_ 2560107544 emb_forceSwitch_req 0;
+BA_ "GenSigStartValue" SG_ 2560107544 emb_normalParamSelect 0;
+BA_ "GenSigStartValue" SG_ 2560107544 emb_advancedParamSelect 0;
+BA_ "GenSigStartValue" SG_ 2560104484 emb_tempSetValue 0;
+BA_ "GenSigStartValue" SG_ 2560104484 emb_workMode 0;
+BA_ "GenSigStartValue" SG_ 2560104484 emb_defrostStage 0;
+BA_ "GenSigStartValue" SG_ 2560104484 emb_collisionWarningSts 0;
+BA_ "GenSigStartValue" SG_ 2560104484 emb_sterilizeSts 0;
+BA_ "GenSigStartValue" SG_ 2560104484 emb_defrostIntervalA1 0;
+BA_ "GenSigStartValue" SG_ 2560104484 emb_tempCtrlReturnTemp 0;
+BA_ "GenSigStartValue" SG_ 2560104484 emb_defrostMaxTimeA3 0;
+BA_ "GenSigStartValue" SG_ 2560104484 emb_defrostEndTempA4 0;
+BA_ "GenSigStartValue" SG_ 2560104484 emb_warmEnable 0;
+BA_ "GenSigStartValue" SG_ 2560104484 emb_evaporationFanTempModeH5 0;
+BA_ "GenSigStartValue" SG_ 2560104484 emb_DefrostTempDifferenceMode 0;
+BA_ "GenSigStartValue" SG_ 2560104484 emb_panelConfig 0;
+BA_ "GenSigStartValue" SG_ 2560104484 emb_dripTime 0;
+BA_ "GenSigStartValue" SG_ 2560104484 emb_boxUpLimitTemp 0;
+BA_ "GenSigStartValue" SG_ 2560170020 H4 0;
+BA_ "GenSigStartValue" SG_ 2560170020 emb_boxTempCorrection 0;
+BA_ "GenSigStartValue" SG_ 2560170020 H7 0;
+BA_ "GenSigStartValue" SG_ 2560170020 H9 0;
+BA_ "GenSigStartValue" SG_ 2560170020 H10 0;
+BA_ "GenSigStartValue" SG_ 2560170020 H12 0;
+BA_ "GenSigStartValue" SG_ 2560170020 H13 0;
+BA_ "GenSigStartValue" SG_ 2560170020 H14 0;
+BA_ "GenSigStartValue" SG_ 2560170020 H15 0;
+BA_ "GenSigStartValue" SG_ 2560235556 emb_errCode 0;
+BA_ "GenSigStartValue" SG_ 2560235556 emb_doorSwitch 0;
+BA_ "GenSigStartValue" SG_ 2560235556 emb_backupPowerSts 0;
+BA_ "GenSigStartValue" SG_ 2560235556 emb_compSts 0;
+BA_ "GenSigStartValue" SG_ 2560235556 emb_ECOSts 0;
+BA_ "GenSigStartValue" SG_ 2560235556 emb_remoteControlSts 0;
+BA_ "GenSigStartValue" SG_ 2560235556 emb_collisionRadarConfig 0;
+BA_ "GenSigStartValue" SG_ 2560235556 emb_boxRecoveryAirTemp 0;
+BA_ "GenSigStartValue" SG_ 2560235556 emb_relativeHumidity 0;
+BA_ "GenSigStartValue" SG_ 2560235556 emb_sterilizeConfig 0;
+BA_ "GenSigStartValue" SG_ 2560235556 emb_areaATempSensorConfig 0;
+BA_ "GenSigStartValue" SG_ 2560235556 emb_areaBTempSensorConfig 0;
+BA_ "GenSigStartValue" SG_ 2560235556 emb_areaCTempSensorConfig 0;
+BA_ "GenSigStartValue" SG_ 2560235556 emb_doorSwitchSensorConfig 0;
+BA_ "GenSigStartValue" SG_ 2560235556 emb_CCSConfig 0;
+BA_ "GenSigStartValue" SG_ 2560235556 emb_VCUConfig 0;
+BA_ "GenSigStartValue" SG_ 2560235556 emb_remoteCtrlConfig 0;
+BA_ "GenSigStartValue" SG_ 2560235556 emb_power_ 0;
+BA_ "GenSigStartValue" SG_ 2560301092 emb_outsideTemp 0;
+BA_ "GenSigStartValue" SG_ 2560301092 emb_airOutTemp 0;
+BA_ "GenSigStartValue" SG_ 2560301092 emb_defrostTemp 0;
+BA_ "GenSigStartValue" SG_ 2560301092 emb_compExhaustTemp 0;
+BA_ "GenSigStartValue" SG_ 2560366628 emb_areaAActualTemp 0;
+BA_ "GenSigStartValue" SG_ 2560366628 emb_areaBActualTemp 0;
+BA_ "GenSigStartValue" SG_ 2560366628 emb_areaCActualTemp 0;
+BA_ "GenSigStartValue" SG_ 2560366628 emb_ctrlVoltage 0;
+BA_ "GenSigStartValue" SG_ 2560432164 emb_highDCVoltage 0;
+BA_ "GenSigStartValue" SG_ 2560432164 emb_highDCCurrent 0;
+BA_ "GenSigStartValue" SG_ 2560432164 emb_compSpeed 0;
+BA_ "GenSigStartValue" SG_ 2560432164 emb_runningTime 0;
+BA_ "GenSigStartValue" SG_ 2560497700 emb_evaporatorVoltage 0;
+BA_ "GenSigStartValue" SG_ 2560497700 emb_condenserVoltage 0;
+BA_ "GenSigStartValue" SG_ 2560497700 emb_freqStatus 0;
+BA_ "GenSigStartValue" SG_ 2560497700 emb_dc_dc1_Sts 0;
+BA_ "GenSigStartValue" SG_ 2560497700 emb_dc_dc2_Sts 0;
+BA_ "GenSigStartValue" SG_ 2560497700 emb_refrigerantPressure 0;
+BA_ "GenSigStartValue" SG_ 2560563236 pro_versionNum1 0;
+BA_ "GenSigStartValue" SG_ 2560563236 pro_versionNum2 0;
+BA_ "GenSigStartValue" SG_ 2560563236 pro_sequenceNum 0;
+BA_ "GenSigStartValue" SG_ 2560563236 pro_softwareBaseNum 0;
+BA_ "GenSigStartValue" SG_ 2560563236 pro_softwareModifyNum 0;
+BA_ "GenSigStartValue" SG_ 2560563236 pro_chassisFactoryNum 0;
+BA_ "GenSigStartValue" SG_ 2560563236 pro_vehicleModel 0;
+BA_ "GenSigStartValue" SG_ 2560563236 pro_cabinFactorNum 0;
+
+VAL_ 2560107544 emb_switch_req 0 "无效（开机和关机均无效）" 1 "有效（开机或者关机）" ;
+VAL_ 2560107544 emb_coldMode_req 0 "无效(开或者关均无效)" 1 "有效(开或者关)" ;
+VAL_ 2560107544 emb_warmMode_req 0 "无效(开或者关均无效)" 1 "有效(开或者关)" ;
+VAL_ 2560107544 emb_fanMode_req 0 "无效(开或者关均无效)" 1 "有效(开或者关)" ;
+VAL_ 2560107544 emb_defrost_req 0 "无效(开或者关均无效)" 1 "有效(开或者关)" ;
+VAL_ 2560107544 emb_sterilize_req 0 "无效(开或者关均无效)" 1 "有效(开或者关)" ;
+VAL_ 2560107544 emb_setValueUp_req 0 "无效" 1 "有效" ;
+VAL_ 2560107544 emb_setValueDown_req 0 "无效" 1 "有效" ;
+VAL_ 2560107544 emb_forceSwitch_req 0 "无效" 1 "有效" ;
+VAL_ 2560107544 emb_normalParamSelect 0 "非设置状态" 1 "除霜间隔时间     A1" 2 "温控回差温度     A2" 3 "除霜运行最长时间 A3" 4 "除霜终止温度     A4" 5 "无效" 6 "无效" 7 "无效" 8 "无效" 9 "无效" 10 "无效" 11 "无效" 12 "无效" 13 "无效" 14 "无效" 15 "无效" 16 "无效" 17 "无效" 18 "无效" 19 "无效" 20 "无效" 21 "无效" 22 "无效" 23 "无效" 24 "无效" 25 "无效" 26 "无效" 27 "无效" 28 "无效" 29 "无效" 30 "无效" 31 "无效" 32 "无效" 33 "无效" 34 "无效" 35 "无效" 36 "无效" 37 "无效" 38 "无效" 39 "无效" 40 "无效" 41 "无效" 42 "无效" 43 "无效" 44 "无效" 45 "无效" 46 "无效" 47 "无效" 48 "无效" 49 "无效" 50 "无效" 51 "无效" 52 "无效" 53 "无效" 54 "无效" 55 "无效" 56 "无效" 57 "无效" 58 "无效" 59 "无效" 60 "无效" 61 "无效" 62 "无效" 63 "无效" 64 "无效" 65 "无效" 66 "无效" 67 "无效" 68 "无效" 69 "无效" 70 "无效" 71 "无效" 72 "无效" 73 "无效" 74 "无效" 75 "无效" 76 "无效" 77 "无效" 78 "无效" 79 "无效" 80 "无效" 81 "无效" 82 "无效" 83 "无效" 84 "无效" 85 "无效" 86 "无效" 87 "无效" 88 "无效" 89 "无效" 90 "无效" 91 "无效" 92 "无效" 93 "无效" 94 "无效" 95 "无效" 96 "无效" 97 "无效" 98 "无效" 99 "无效" 100 "无效" 101 "无效" 102 "无效" 103 "无效" 104 "无效" 105 "无效" 106 "无效" 107 "无效" 108 "无效" 109 "无效" 110 "无效" 111 "无效" 112 "无效" 113 "无效" 114 "无效" 115 "无效" 116 "无效" 117 "无效" 118 "无效" 119 "无效" 120 "无效" 121 "无效" 122 "无效" 123 "无效" 124 "无效" 125 "无效" 126 "无效" 127 "无效" 128 "无效" 129 "无效" 130 "无效" 131 "无效" 132 "无效" 133 "无效" 134 "无效" 135 "无效" 136 "无效" 137 "无效" 138 "无效" 139 "无效" 140 "无效" 141 "无效" 142 "无效" 143 "无效" 144 "无效" 145 "无效" 146 "无效" 147 "无效" 148 "无效" 149 "无效" 150 "无效" 151 "无效" 152 "无效" 153 "无效" 154 "无效" 155 "无效" 156 "无效" 157 "无效" 158 "无效" 159 "无效" 160 "无效" 161 "无效" 162 "无效" 163 "无效" 164 "无效" 165 "无效" 166 "无效" 167 "无效" 168 "无效" 169 "无效" 170 "无效" 171 "无效" 172 "无效" 173 "无效" 174 "无效" 175 "无效" 176 "无效" 177 "无效" 178 "无效" 179 "无效" 180 "无效" 181 "无效" 182 "无效" 183 "无效" 184 "无效" 185 "无效" 186 "无效" 187 "无效" 188 "无效" 189 "无效" 190 "无效" 191 "无效" 192 "无效" 193 "无效" 194 "无效" 195 "无效" 196 "无效" 197 "无效" 198 "无效" 199 "无效" 200 "无效" 201 "无效" 202 "无效" 203 "无效" 204 "无效" 205 "无效" 206 "无效" 207 "无效" 208 "无效" 209 "无效" 210 "无效" 211 "无效" 212 "无效" 213 "无效" 214 "无效" 215 "无效" 216 "无效" 217 "无效" 218 "无效" 219 "无效" 220 "无效" 221 "无效" 222 "无效" 223 "无效" 224 "无效" 225 "无效" 226 "无效" 227 "无效" 228 "无效" 229 "无效" 230 "无效" 231 "无效" 232 "无效" 233 "无效" 234 "无效" 235 "无效" 236 "无效" 237 "无效" 238 "无效" 239 "无效" 240 "无效" 241 "无效" 242 "无效" 243 "无效" 244 "无效" 245 "无效" 246 "无效" 247 "无效" 248 "无效" 249 "无效" 250 "无效" 251 "无效" 252 "无效" 253 "无效" 254 "无效" 255 "无效" ;
+VAL_ 2560107544 emb_advancedParamSelect 0 "非设置状态" 1 "制热功能使能     H1" 2 "滴水时间  H2" 3 "库温设定上限温度 H3" 4 "库温设定上限温度 H4" 5 "蒸发风机到温模式 H5" 6 "箱内温度校正H6" 7 "压缩机最短停机时间H7" 8 "除霜温差模式 H8" 9 "当量除霜温差 H9" 10 "温差除霜最高除霜温度限制值H10" 11 "面板配置   H11" 12 "排气温度控制喷液阀H12" 13 "打开喷液阀的排气温度阀值H13" 14 "关闭喷液阀的排气温度阀值H14" 15 "压缩机转速上限设置H15" 16 "无效" 17 "无效" 18 "无效" 19 "无效" 20 "无效" 21 "无效" 22 "无效" 23 "无效" 24 "无效" 25 "无效" 26 "无效" 27 "无效" 28 "无效" 29 "无效" 30 "无效" 31 "无效" 32 "无效" 33 "无效" 34 "无效" 35 "无效" 36 "无效" 37 "无效" 38 "无效" 39 "无效" 40 "无效" 41 "无效" 42 "无效" 43 "无效" 44 "无效" 45 "无效" 46 "无效" 47 "无效" 48 "无效" 49 "无效" 50 "无效" 51 "无效" 52 "无效" 53 "无效" 54 "无效" 55 "无效" 56 "无效" 57 "无效" 58 "无效" 59 "无效" 60 "无效" 61 "无效" 62 "无效" 63 "无效" 64 "无效" 65 "无效" 66 "无效" 67 "无效" 68 "无效" 69 "无效" 70 "无效" 71 "无效" 72 "无效" 73 "无效" 74 "无效" 75 "无效" 76 "无效" 77 "无效" 78 "无效" 79 "无效" 80 "无效" 81 "无效" 82 "无效" 83 "无效" 84 "无效" 85 "无效" 86 "无效" 87 "无效" 88 "无效" 89 "无效" 90 "无效" 91 "无效" 92 "无效" 93 "无效" 94 "无效" 95 "无效" 96 "无效" 97 "无效" 98 "无效" 99 "无效" 100 "无效" 101 "无效" 102 "无效" 103 "无效" 104 "无效" 105 "无效" 106 "无效" 107 "无效" 108 "无效" 109 "无效" 110 "无效" 111 "无效" 112 "无效" 113 "无效" 114 "无效" 115 "无效" 116 "无效" 117 "无效" 118 "无效" 119 "无效" 120 "无效" 121 "无效" 122 "无效" 123 "无效" 124 "无效" 125 "无效" 126 "无效" 127 "无效" 128 "无效" 129 "无效" 130 "无效" 131 "无效" 132 "无效" 133 "无效" 134 "无效" 135 "无效" 136 "无效" 137 "无效" 138 "无效" 139 "无效" 140 "无效" 141 "无效" 142 "无效" 143 "无效" 144 "无效" 145 "无效" 146 "无效" 147 "无效" 148 "无效" 149 "无效" 150 "无效" 151 "无效" 152 "无效" 153 "无效" 154 "无效" 155 "无效" 156 "无效" 157 "无效" 158 "无效" 159 "无效" 160 "无效" 161 "无效" 162 "无效" 163 "无效" 164 "无效" 165 "无效" 166 "无效" 167 "无效" 168 "无效" 169 "无效" 170 "无效" 171 "无效" 172 "无效" 173 "无效" 174 "无效" 175 "无效" 176 "无效" 177 "无效" 178 "无效" 179 "无效" 180 "无效" 181 "无效" 182 "无效" 183 "无效" 184 "无效" 185 "无效" 186 "无效" 187 "无效" 188 "无效" 189 "无效" 190 "无效" 191 "无效" 192 "无效" 193 "无效" 194 "无效" 195 "无效" 196 "无效" 197 "无效" 198 "无效" 199 "无效" 200 "无效" 201 "无效" 202 "无效" 203 "无效" 204 "无效" 205 "无效" 206 "无效" 207 "无效" 208 "无效" 209 "无效" 210 "无效" 211 "无效" 212 "无效" 213 "无效" 214 "无效" 215 "无效" 216 "无效" 217 "无效" 218 "无效" 219 "无效" 220 "无效" 221 "无效" 222 "无效" 223 "无效" 224 "无效" 225 "无效" 226 "无效" 227 "无效" 228 "无效" 229 "无效" 230 "无效" 231 "无效" 232 "无效" 233 "无效" 234 "无效" 235 "无效" 236 "无效" 237 "无效" 238 "无效" 239 "无效" 240 "无效" 241 "无效" 242 "无效" 243 "无效" 244 "无效" 245 "无效" 246 "无效" 247 "无效" 248 "无效" 249 "无效" 250 "无效" 251 "无效" 252 "无效" 253 "无效" 254 "无效" 255 "无效" ;
+VAL_ 2560104484 emb_workMode 0 "关闭" 1 "制冷" 2 "制热" 3 "通风" ;
+VAL_ 2560104484 emb_defrostStage 0 "除霜关闭" 1 "除霜准备" 2 "除霜运行" 3 "滴水" ;
+VAL_ 2560104484 emb_collisionWarningSts 0 "大于1.5米，无防撞提示" 1 "距离非常近，小于0.3 M" 2 "距离很近，大于0.3米，小于0.6米" 3 "距离一般，大于0.6米，小于0.9米" 4 "距离远，大于0.9米，小于1.2米" 5 "距离更远，大于1.2米，小于1.5米" ;
+VAL_ 2560104484 emb_sterilizeSts 0 "关闭" 1 "开启" ;
+VAL_ 2560104484 emb_warmEnable 0 "关闭" 1 "使能" ;
+VAL_ 2560104484 emb_evaporationFanTempModeH5 0 "关闭" 1 "开启" ;
+VAL_ 2560104484 emb_DefrostTempDifferenceMode 0 "关闭" 1 "开启" ;
+VAL_ 2560104484 emb_panelConfig 0 "有面板" 1 "无面板" ;
+VAL_ 2560235556 emb_errCode 0 "无故障时" 1 "1控制电源故障" 2 "2箱内回风温度传感器故障" 3 "3箱外环境温度传感器故障" 4 "4蒸发器出风温度传感器故障" 5 "5除霜温度传感器故障" 6 "6系统制冷剂高压压力故障" 7 "7系统制冷剂低压压力故障" 8 "8压缩机排气温度高故障" 9 "9变频器故障" 11 "11 DC-DC故障" 12 "12高压压力传感器故障" 14 "14压缩机排气温度传感器故障" 21 "21箱内A区温度传感器故障" 22 "22箱内B区温度传感器故障" 23 "23箱内C区温度传感器故障" 24 "24箱内湿度传感器故障" 30 "30机组主接触器粘连故障" 94 "94顶控-DC通讯故障" 31 "31车辆VCU不许可上电故障" 95 "95顶控-INV通讯故障" 96 "96防撞雷达模块通讯故障" 97 "97自带远程管理模块RS485I通讯故障" 98 "98顶控-车辆VCU通讯故障" 99 "99顶控-车辆中控屏通讯故障" 100 "100 顶控-面板通讯故障" ;
+VAL_ 2560235556 emb_doorSwitch 0 "关门" 1 "开门" ;
+VAL_ 2560235556 emb_backupPowerSts 0 "电池供电" 1 "备电供电" ;
+VAL_ 2560235556 emb_compSts 0 "停止" 1 "启动" ;
+VAL_ 2560235556 emb_ECOSts 0 "无效" 1 "有效" ;
+VAL_ 2560235556 emb_remoteControlSts 0 "面板优先" 1 "远程控制优先" ;
+VAL_ 2560235556 emb_collisionRadarConfig 0 "无配置" 1 "有配置" ;
+VAL_ 2560235556 emb_sterilizeConfig 0 "无配置" 1 "有配置" ;
+VAL_ 2560235556 emb_areaATempSensorConfig 0 "无配置" 1 "有配置" ;
+VAL_ 2560235556 emb_areaBTempSensorConfig 0 "无配置" 1 "有配置" ;
+VAL_ 2560235556 emb_areaCTempSensorConfig 0 "无配置" 1 "有配置" ;
+VAL_ 2560235556 emb_doorSwitchSensorConfig 0 "无配置" 1 "有配置" ;
+VAL_ 2560235556 emb_CCSConfig 0 "无配置" 1 "有配置" ;
+VAL_ 2560235556 emb_VCUConfig 0 "无配置" 1 "有配置" ;
+VAL_ 2560235556 emb_remoteCtrlConfig 0 "无配置" 1 "有配置" ;
+VAL_ 2560563236 pro_vehicleModel 1 "EVM100" ;
+
+

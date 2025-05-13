@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/a0SettingFrag"
-        android:name="com.QL.CentralControlSystem.pages.SettingFragment"
+        android:name="com.ql.ccs.pages.SettingFragment"
         android:label="set"
         tools:layout="@layout/fragment_setting">
         <action
@@ -20,29 +20,29 @@
     </fragment>
     <fragment
         android:id="@+id/b0WorkStatusFrag"
-        android:name="com.QL.CentralControlSystem.pages.WorkStatusFragment"
+        android:name="com.ql.ccs.pages.WorkStatusFragment"
         android:label="work"
         tools:layout="@layout/fragment_work_status" />
     <fragment
         android:id="@+id/c0FaultDetectionFrag"
-        android:name="com.QL.CentralControlSystem.pages.FaultDetectionFragment"
+        android:name="com.ql.ccs.pages.FaultDetectionFragment"
         android:label="fault"
         tools:layout="@layout/fragment_fault_detection" />
     <fragment
         android:id="@+id/d0UnitInfoFrag"
-        android:name="com.QL.CentralControlSystem.pages.UnitInfoFragment"
+        android:name="com.ql.ccs.pages.UnitInfoFragment"
         android:label="info"
         tools:layout="@layout/fragment_unit_info" />
     <fragment
         android:id="@+id/f0UsingHelpFrag"
-        android:name="com.QL.CentralControlSystem.pages.UsingHelpFragment"
+        android:name="com.ql.ccs.pages.UsingHelpFragment"
         android:label="help"
         tools:layout="@layout/fragment_using_help" />
 
 
     <fragment
         android:id="@+id/setFrostFragment"
-        android:name="com.QL.CentralControlSystem.pages.SetFrostFragment"
+        android:name="com.ql.ccs.pages.SetFrostFragment"
         android:label="fragment_set_frost"
         tools:layout="@layout/fragment_set_frost" />
 

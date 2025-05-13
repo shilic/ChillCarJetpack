@@ -11,7 +11,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/top_bar_frag"
-        android:name="com.QL.CentralControlSystem.bar.TopFragment"
+        android:name="com.ql.ccs.bar.TopFragment"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         tools:layout="@layout/fragment_top" />
