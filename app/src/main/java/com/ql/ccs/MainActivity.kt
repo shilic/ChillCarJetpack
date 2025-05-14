@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import com.ql.ccs.R
 import com.ql.ccs.databinding.ActivityMainBinding
 import com.ql.ccs.mcu.McuAdapter
 import quickCanResolver.core.CanIo
@@ -13,7 +12,7 @@ import quickCanResolver.core.CanListenService
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding  // Binding 类名由布局文件名自动生成
-    // 0. 初始化CAN监听
+    /** 初始化CAN监听 */
     private val canListenService : CanListenService = CanListenImp()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +31,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     private fun initFragment() {
         // 1. 获取碎片容器
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -42,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.navigationRail, navController) // 将 左侧 Tab 与 NavigationUI 绑定
     }
     companion object{
-        private const val logTag = "MainActivity"
+        private const val LogTag = "MainActivity"
     }
 
 } // MainActivity : AppCompatActivity()

@@ -5,8 +5,11 @@ import android.mcu.McuManager;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.ql.ccs.tool.KtToolKt;
+
 import java.util.Arrays;
 
+import quickCanResolver.core.CanIo;
 import quickCanResolver.tool.SLCTool;
 import quickCanResolver.core.CanListenService;
 import quickCanResolver.core.McuService;
@@ -26,10 +29,18 @@ public class McuAdapter implements McuService  {
     @Override
     public void nativeSend(int canId, byte[] data8) {
         // 最终调用了本地的方法来实现报文的发送
-        //mcuCan.nativeSendCanData(canId, data8);
-        int[] ReqData = {  0x67 , 0x45 , 0x23 , 0x81 ,  0x08,  0x00,0x00,0x00,0x00    ,0x00,0x00,0x00,0x00 };
-        mcuCan.sendCanCommand(ReqData, ReqData.length);
+        int[] mcuData = new int[13];
+        int[] id_ = SLCTool.intTo4BytesI(canId, SLCTool.DataType.Intel); //0x1898_2418。  18 98 24 18 将ID变成数组形式
+        System.arraycopy(id_, 0, mcuData, 0, 4); //存入ID; [ 18,24,98,18,   0,   0,0,0,0,  0,0,0,0, ] //高位放高位，故反向
+        mcuData[4] = 8;  // 存入长度8 , [ 18,24,98,18,  8,  0,0,0,0,  0,0,0,0, ]
+        int[] frame8 = KtToolKt.toIntArray(data8); // java可以调用扩展函数吗？
+        System.arraycopy(frame8, 0, mcuData, 5,8); //存入 8位byte的数据 frame // [ 18,24,98,18,  8,  2,3E,F,0,  0,0,0,0, ]
+        mcuCan.sendCanCommand(mcuData, mcuData.length);
     }
+    /* 此数据用于获取历史报文
+     int cmdId = 0X8123_4567; //指令Id  0x67, 0x45, 0x23,0x81,  //0x81, 0x23, 0x45,0x67,
+        int[] ReqData = {  0x67 , 0x45 , 0x23 , 0x81 ,  0x08,  0x00,0x00,0x00,0x00    ,0x00,0x00,0x00,0x00 };
+    * */
     //在主活动中调用注册之后，最终会回到这里进行注册。这里传入主活动的监听函数。
     @Override
     public void nativeRegister(CanListenService canListener) {
@@ -78,7 +89,7 @@ public class McuAdapter implements McuService  {
             int canId = SLCTool.from4bytesToInt(Arrays.copyOfRange(rawData, 4, 8)  , SLCTool.DataType.Intel);
             byte[] data8 = Arrays.copyOfRange(rawData, 9, 17);
             // 解码报文
-            //CanIo.getInstance().manager.deCode_B(canId, data8);
+            CanIo.Manager().deCode_B(canId, data8);
             // 再回调从 Activity 传入的回调函数
             canListener.listened(canId,data8);
         }   //onStatus

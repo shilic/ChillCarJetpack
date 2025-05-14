@@ -32,7 +32,7 @@ android {
 
     buildFeatures {
         viewBinding true
-        // dataBinding true
+        dataBinding true
     }
     defaultConfig {
         // 应用包名 com.QL.CentralControlSystem。发布的时候改这个值就可以。
@@ -62,12 +62,12 @@ android {
         //jvmTarget = '1.8'
         jvmTarget = '17'  // Kotlin 目标版本同步为 17
     }
-}
+} // android
 
 dependencies {
     // //=======我的框架
-    implementation files('libs/QuickCanResolver-1.0-SNAPSHOT-javadoc.jar')
     implementation files('libs/QuickCanResolver-1.0-SNAPSHOT.jar')
+    implementation files('libs/QuickCanResolver-1.0-SNAPSHOT-javadoc.jar')
     implementation files('libs/QuickCanResolver-1.0-SNAPSHOT-sources.jar')
     implementation files('libs/xsdmapi.jar')
 
@@ -86,6 +86,7 @@ dependencies {
 
     // ====== Room 数据库 2.5.2 ======
     implementation 'androidx.room:room-ktx:2.5.2'
+    // 不要擅自更改这个文件夹里的依赖版本，否则可能不兼容，并且无法运行。
     //implementation 'androidx.core:core-ktx:+'
     kapt 'androidx.room:room-compiler:2.5.2'
 

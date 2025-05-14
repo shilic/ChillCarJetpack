@@ -13,6 +13,7 @@ enum class EMBErrorCode(
     /** viewId */
     val viewId: Int,
 ) {
+    NotDefine("未定义故障",-1,0, MyViewIds.NotDefine),
     NOFault("机组正常", 0, 0, MyViewIds.NOFaultId),
     CtrlPowerFlt( "控制电源故障", 1, 4, MyViewIds.CtrlPowerFltId ),
     ReAirTempSensorFlt( "箱内回风温度传感器故障", 2, 2, MyViewIds.ReAirTempSensorFltId ),
@@ -55,13 +56,13 @@ enum class EMBErrorCode(
 //    }
 
     companion object {
-        fun getErrByCode(code: Int): EMBErrorCode? {
+        fun getErrByCode(code: Int): EMBErrorCode {
             for (fault in values()) {
                 if (fault.errorCode == code) {
                     return fault
                 }
             }
-            return null // If no matching fault code found
+            return NotDefine // If no matching fault code found
         }
     }
 }

@@ -47,6 +47,7 @@ object MyViewIds {
     val DefrostStopTempId = View.generateViewId()
     val BoxTempCorrectionId = View.generateViewId()
     val EvaporationFanTempModeId = View.generateViewId()
+    val NotDefine = View.generateViewId()
     val NOFaultId = View.generateViewId()
     val CtrlPowerFltId = View.generateViewId()
     val ReAirTempSensorFltId = View.generateViewId()

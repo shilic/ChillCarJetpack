@@ -39,3 +39,16 @@ fun parseAssetFile(context: Context, assetFileName: String?, parseStream : (inpu
         e.printStackTrace()
     }
 }
+/**
+ * 扩展函数：将每个 Byte 转换为无符号 Int
+  */
+fun ByteArray.toIntArray(): IntArray {
+    return IntArray(this.size) { index ->
+        this[index].toInt() and 0xFF // 消除符号扩展
+    }
+}
+//fun toIntArray (byteArray: ByteArray) : IntArray {
+//    return IntArray(byteArray.size) { index ->
+//        byteArray[index].toInt() and 0xFF // 消除符号扩展
+//    }
+//}
