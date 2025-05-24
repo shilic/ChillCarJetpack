@@ -12,7 +12,7 @@ import quickCanResolver.tool.SLCTool
  * 实现数据监听回调接口
  */
 class CanListenImp : CanListenService {
-    override fun listened(canId: Int, p1: ByteArray?) {
+    override fun listened(canId: Int, data8: ByteArray) {
         //Log.d(LogTag,"最终，主活动的监听被回调, 被监听的报文ID = ${SLCTool.toHexString(canId)}"  )
         when(canId){
             Cabin2CCS1_ID -> handle1()
