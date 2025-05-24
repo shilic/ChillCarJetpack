@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.ql.ccs.databinding.ActivityMainBinding
-import com.ql.ccs.mcu.McuAdapter
 import quickCanResolver.core.CanIo
 import quickCanResolver.core.CanListenService
 
@@ -22,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         // 初始化碎片
         initFragment()
         // 注册回调函数
-        CanIo.getInstance().register(McuAdapter::class.java, canListenService)
+        CanIo.getInstance().register(canListenService)
     } // onCreate
 
     override fun onDestroy() {
