@@ -14,76 +14,51 @@ import quickCanResolver.core.DbcBinding
         DbcBinding.Dbc(dbcTag = CabinData.dbcTag1, dbcPath = CabinData.dbcPath1)
 ])
 data class EMBCmd (
-    /* 发送数据 */
-    /** 上装取电请求（发给VCU） ;<br>
-     * 庆铃标准 : 0x0:预留 ; 0x1:无效;  0x2：有效 ; 0x3:无效值未使用 <br>   */
-    @Deprecated("EMB没有使用这个值")
-    var ptoHvOnReq: Int = 0,
-
     /** 请求机组工作(复位式)<br>
      * emb标准 (复位式) : 0x00  无效 ; 0x01  有效 (无论开关机都发1 ，根据 workMode 的值来改变 );<br>
      * 庆铃标准 : 0x0: 预留 ; 0x1:OFF（关机） ; 0x2：ON（开机） ; 0x3: 无效值未使用 <br> */
     @CanBinding(messageId = 0x18982418, signalTag = "emb_switch_req")
     var switchReq: Int = 0,
-
-    /** 请求机组工作模式 ; <br></br>
-     * 庆铃标准 :  0x0：预留 ; 0x1：制冷 ; 0x2：制热 ; 0x3: 仅通风 ;<br>
-     * 4-14：预留 ; 15：无效值未使用 <br> */
-    @Deprecated("EMB没有使用这个值")
-    var workModeReq: Int = 0,
-
-    /** 请求新风控制（内外循环）（预留） ;<br></br>
-     * 庆铃标准 :  0x0: 预留 ; 0x1:OFF（关机） ;<br>
-     * 0x2：ON（开机） ; 0x3: 无效值未使用 <br>  */
-    @Deprecated("EMB没有使用这个值")
-    var newWindReq: Int = 0,
-
+    /** 制冷模式 ; <br></br>emb标准 : 0x00  无效 ; 0x01  有效  */
+    @CanBinding(signalTag = "emb_coldMode_req")
+    var coldModeReq: Int = 0,
+    /** 制热模式 ; <br></br>emb标准 : 0x00  无效 ; 0x01  有效  */
+    @CanBinding(signalTag = "emb_warmMode_req")
+    var warmModeReq: Int = 0,
+    /** 通风模式 ; <br></br>emb标准 : 0x00  无效 ; 0x01  有效  */
+    @CanBinding(signalTag = "emb_fanMode_req")
+    var fanModeReq: Int = 0,
     /** 请求手动除霜 ; <br></br>
      * emb标准 (复位式): 0x00  无效 ; 0x01  有效 ; <br></br>
      * 庆铃标准 : 0x0: 预留 ; 0x1:除霜关闭  ; 0x2：除霜开启 ; 0x3: 无效值未使用<br>   */
     @CanBinding(signalTag = "emb_defrost_req")
     var defrostReq: Int = 0,
-
     /** 请求杀菌控制 ; <br></br>
      * emb标准 (复位式): 0x00  无效 ; 0x01  有效 ; <br></br>
      * 庆铃标准 : 0x0: 预留 ; 0x1:OFF（关机） ; 0x2：ON（开机） ; 0x3: 无效值未使用   */
     @CanBinding(signalTag = "emb_sterilize_req")
     var sterilizeReq: Int = 0,
-
-    /** 无效标志位 ; <br></br>庆铃标准 : 0x0：该帧报文无效 ; 0x1：该帧报文有效  */
-    @Deprecated("暂不使用")
-    var invalidFlag: Int = 0,
-
-    /** 制冷模式 ; <br></br>emb标准 : 0x00  无效 ; 0x01  有效  */
-    @CanBinding(signalTag = "emb_coldMode_req")
-    var coldModeReq: Int = 0,
-
-    /** 制热模式 ; <br></br>emb标准 : 0x00  无效 ; 0x01  有效  */
-    @CanBinding(signalTag = "emb_warmMode_req")
-    var warmModeReq: Int = 0,
-
-    /** 通风模式 ; <br></br>emb标准 : 0x00  无效 ; 0x01  有效  */
-    @CanBinding(signalTag = "emb_fanMode_req")
-    var fanModeReq: Int = 0,
-
+    /** 设定值加1 ，同时表示设定 开启; 设定数据“+”。<br></br>
+     * 设定“数据加”和“数据减”不可以同时为1，否则系统不执行。<br></br>
+     * 普通参数和高级参数全部为0时，表示设定温度。<br></br>
+     * 并且普通参数和高级参数不可以同时为1，只能有一个为1 。<br></br>
+     * emb标准 : 0x00  无效 ; 0x01  有效 ;<br></br>
+     * 庆铃标准 : 0x0: 无效值未使用 ; 0x1:加1℃ <br></br> */
+    @CanBinding(signalTag = "emb_setValueUp_req")
+    var setValueUpReq: Int = 0,
+    /** 设定值减1 ，同时表示设定 关闭; 设定数据“-” 。<br></br>
+     * 设定“数据加”和“数据减”不可以同时为1，否则系统不执行。<br></br>
+     * 普通参数和高级参数全部为0时，表示设定温度。<br></br>
+     * 并且普通参数和高级参数不可以同时为1，只能有一个为1 。<br></br>
+     * emb标准 : 0x00  无效 ; 0x01  有效 ; <br></br>
+     * 庆铃标准 : 0x0: 无效值未使用 ; 0x1: 减1℃ <br></br> */
+    @CanBinding(signalTag = "emb_setValueDown_req")
+    var setValueDownReq: Int = 0,
+    /** 强制开关机 ; emb标准 : 0x00  无效 ; 0x01  有效 ; */
+    @Deprecated("预留，未做协议，不使用该信号")
+    var forceSwitchReq: Int = 0,
 
     /* 发送数据 */
-    /** 参数设置有效条目 ; <br></br>
-     * 庆铃标准 : <br></br>
-     * 0x0：非设置状态 ; <br></br>
-     * 0x1：除霜间隔时间 A1 ; <br></br>
-     * 0x2:  预留 ;<br></br>
-     * 0x3: 除霜运行最长时间 A3 ;<br></br>
-     * 0x4：除霜终止温度 A4 ;<br></br>
-     * 0x5：蒸发风机到温模式 H5 ;<br></br>
-     * 0x6：箱内温度校正 H6 ;<br></br>
-     * 0x7：温区A温度设定 <br></br>
-     * 8：温区B温度设定 ; <br></br>
-     * 9：温区C温区设定 ; <br></br>
-     * 10-15：预留  */
-    @Deprecated("EMB没有使用这个值")
-    var paramSelect: Int = 0,
-
     /** 普通参数设置状态标识  <br></br>emb标准 : <br></br>
      * 0x00  非设置状态 ; <br></br>
      * 0x01  除霜间隔时间 A1 ; <br></br>
@@ -114,28 +89,41 @@ data class EMBCmd (
      * 0x10-0xFF  无效 */
     @CanBinding(signalTag = "emb_advancedParamSelect")
     var advancedParamSelect: Int = 0,
+    /*
+    /** 上装取电请求（发给VCU） ;<br>
+     * 庆铃标准 : 0x0:预留 ; 0x1:无效;  0x2：有效 ; 0x3:无效值未使用 <br>   */
+    @Deprecated("EMB没有使用这个值")
+    var ptoHvOnReq: Int = 0,
+    /** 请求机组工作模式 ; <br></br>
+     * 庆铃标准 :  0x0：预留 ; 0x1：制冷 ; 0x2：制热 ; 0x3: 仅通风 ;<br>
+     * 4-14：预留 ; 15：无效值未使用 <br> */
+    @Deprecated("EMB没有使用这个值")
+    var workModeReq: Int = 0,
+    /** 请求新风控制（内外循环）（预留） ;<br></br>
+     * 庆铃标准 :  0x0: 预留 ; 0x1:OFF（关机） ;<br>
+     * 0x2：ON（开机） ; 0x3: 无效值未使用 <br>  */
+    @Deprecated("EMB没有使用这个值")
+    var newWindReq: Int = 0,
 
-    /** 设定值加1 ，同时表示设定 开启; 设定数据“+”。<br></br>
-     * 设定“数据加”和“数据减”不可以同时为1，否则系统不执行。<br></br>
-     * 普通参数和高级参数全部为0时，表示设定温度。<br></br>
-     * 并且普通参数和高级参数不可以同时为1，只能有一个为1 。<br></br>
-     * emb标准 : 0x00  无效 ; 0x01  有效 ;<br></br>
-     * 庆铃标准 : 0x0: 无效值未使用 ; 0x1:加1℃ <br></br> */
-    @CanBinding(signalTag = "emb_setValueUp_req")
-    var setValueUpReq: Int = 0,
-
-    /** 设定值减1 ，同时表示设定 关闭; 设定数据“-” 。<br></br>
-     * 设定“数据加”和“数据减”不可以同时为1，否则系统不执行。<br></br>
-     * 普通参数和高级参数全部为0时，表示设定温度。<br></br>
-     * 并且普通参数和高级参数不可以同时为1，只能有一个为1 。<br></br>
-     * emb标准 : 0x00  无效 ; 0x01  有效 ; <br></br>
-     * 庆铃标准 : 0x0: 无效值未使用 ; 0x1: 减1℃ <br></br> */
-    @CanBinding(signalTag = "emb_setValueDown_req")
-    var setValueDownReq: Int = 0,
-
-    /** 强制开关机 ; emb标准 : 0x00  无效 ; 0x01  有效 ; */
-    @Deprecated("预留，未做协议，不使用该信号")
-    var forceSwitchReq: Int = 0
+    /** 参数设置有效条目 ; <br></br>
+     * 庆铃标准 : <br></br>
+     * 0x0：非设置状态 ; <br></br>
+     * 0x1：除霜间隔时间 A1 ; <br></br>
+     * 0x2:  预留 ;<br></br>
+     * 0x3: 除霜运行最长时间 A3 ;<br></br>
+     * 0x4：除霜终止温度 A4 ;<br></br>
+     * 0x5：蒸发风机到温模式 H5 ;<br></br>
+     * 0x6：箱内温度校正 H6 ;<br></br>
+     * 0x7：温区A温度设定 <br></br>
+     * 8：温区B温度设定 ; <br></br>
+     * 9：温区C温区设定 ; <br></br>
+     * 10-15：预留  */
+    @Deprecated("EMB没有使用这个值")
+    var paramSelect: Int = 0,
+    /** 无效标志位 ; <br></br>庆铃标准 : 0x0：该帧报文无效 ; 0x1：该帧报文有效  */
+    @Deprecated("暂不使用")
+    var invalidFlag: Int = 0,
+    */
 ) : CanCopyable<EMBCmd>, Cloneable {
 
     /** 得到一串请求开关机的报文  */
@@ -326,7 +314,7 @@ data class EMBCmd (
      * 得到一段发送报文
      */
     private fun compileSendData(): IntArray {
-        return CanIo.Manager().enCode_B(CabinData.CCS7_ID_).toIntArray()
+        return CanIo.Manager().enCode_B(CabinData.CCS7_ID).toIntArray()
     }
     companion object {
         private const val LogTag = "EMBCmd"

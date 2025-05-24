@@ -12,8 +12,7 @@ abstract class CabinData {
         const val emb_cabinCtrlId = 0x18FF_0019
 
         /** 发送id_CCS7_ID = 0x1898_2418  */
-        const val CCS7_ID = 0x1898_2418
-        const val CCS7_ID_ = 0x189_82418 //发送指令使用的id
+        const val CCS7_ID = 0x189_82418 //发送指令使用的id
         const val CCS8_ID = 0x1899_2418
         const val CCS9_ID = 0x189A_2418
         const val CCS10_ID = 0x189B_2418

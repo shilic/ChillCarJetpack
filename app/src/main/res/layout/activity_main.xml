@@ -14,7 +14,8 @@
         android:name="com.ql.ccs.bar.TopFragment"
         android:layout_width="match_parent"
         android:layout_height="90dp"
-        tools:layout="@layout/fragment_top" />
+        tools:layout="@layout/fragment_top"
+        />
 
     <LinearLayout
         android:id="@+id/main_contents"
@@ -34,11 +35,14 @@
             android:labelFor="@id/nav_host_fragment"
             android:measureAllChildren="true"
             android:outlineAmbientShadowColor="#575454"
-            android:paddingHorizontal="5dp"
+            android:paddingHorizontal="7dp"
             android:paddingVertical="5dp"
             android:scrollbars="vertical"
             android:textAlignment="gravity"
             android:touchscreenBlocksFocus="false"
+            app:itemIconSize="30dp"
+            app:itemPaddingBottom="8dp"
+            app:itemPaddingTop="4dp"
             app:itemRippleColor="#525455"
             app:itemTextColor="#CCCACA"
             app:labelVisibilityMode="labeled"

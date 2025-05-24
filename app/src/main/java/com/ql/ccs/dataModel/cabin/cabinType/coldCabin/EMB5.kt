@@ -31,4 +31,4 @@ data class EMB5 (
     override fun clone(): EMB5 {
         return super.clone() as EMB5
     }
-} // 0x189C_1824 ABC分区温度和控制电压
+}
