@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- 设置背景颜色为半透明白色  @color/navigation_bar_pressed_transparent   #A6352F2F -->
+    <solid android:color="#C8C8CC" />
+    <!-- 设置背景颜色为透明 -->
+    <corners android:radius="0dp" /> <!-- 设置圆角半径 -->
+</shape>

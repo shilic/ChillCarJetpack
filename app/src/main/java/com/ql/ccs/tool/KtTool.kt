@@ -47,8 +47,3 @@ fun ByteArray.toIntArray(): IntArray {
         this[index].toInt() and 0xFF // 消除符号扩展
     }
 }
-//fun toIntArray (byteArray: ByteArray) : IntArray {
-//    return IntArray(byteArray.size) { index ->
-//        byteArray[index].toInt() and 0xFF // 消除符号扩展
-//    }
-//}

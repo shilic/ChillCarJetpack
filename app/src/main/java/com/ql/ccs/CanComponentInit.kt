@@ -9,12 +9,9 @@ import com.ql.ccs.mcu.McuAdapter
 import quickCanResolver.core.CanIo
 
 /**
- * 初始化框架组件，需要在application里边监听呢
+ * CAN组件初始化，需要在application里边监听呢
  */
-class CanComponentInit(
-    // 通过构造函数注入
-    private val appContext: Context
-) : DefaultLifecycleObserver {
+class CanComponentInit(private val appContext: Context) : DefaultLifecycleObserver {
     override fun onCreate(owner: LifecycleOwner) {
         initCanIo(appContext)
     }

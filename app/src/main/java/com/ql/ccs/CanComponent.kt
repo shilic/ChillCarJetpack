@@ -12,7 +12,7 @@ import quickCanResolver.core.CanIo
 import quickCanResolver.core.CanListenService
 
 /**
- * CAN组件
+ * CAN组件，需要在主活动中完成生命周期的监听。
  */
 class CanComponent : ViewModel(), CanListenService , DefaultLifecycleObserver  {
     init {
@@ -20,7 +20,6 @@ class CanComponent : ViewModel(), CanListenService , DefaultLifecycleObserver  {
     }
     /* // @OnLifecycleEvent 注解会存在反射的性能开销，故官方弃用了该组件，改用了 LifecycleEventObserver 接口 ，或者 DefaultLifecycleObserver 接口更方便 */
     override fun onCreate(owner: LifecycleOwner) {
-        println("关联到 ${owner.javaClass.simpleName}")
         // 注册回调函数
         CanIo.getInstance().register(this)
     }
@@ -28,15 +27,6 @@ class CanComponent : ViewModel(), CanListenService , DefaultLifecycleObserver  {
         // 当生命周期进入 DESTROYED 状态时，系统会自动移除观察者（但显式移除更安全）
         owner.lifecycle.removeObserver(this)
         CanIo.getInstance().unRegisterCanListener()
-    }
-
-    // 可选：获取 Context 的扩展方法
-    private fun LifecycleOwner.getContext(): Context {
-        return when (this) {
-            is Context -> this
-            is Fragment -> requireContext()
-            else -> throw IllegalStateException("无效的 LifecycleOwner")
-        }
     }
     override fun listened(canId: Int, data8: ByteArray) {
         //Log.d(LogTag,"最终，主活动的监听被回调, 被监听的报文ID = ${SLCTool.toHexString(canId)}"  )
@@ -80,7 +70,14 @@ class CanComponent : ViewModel(), CanListenService , DefaultLifecycleObserver  {
     private fun handle8(){
 
     }
-
+    // 可选：获取 Context 的扩展方法
+    private fun LifecycleOwner.getContext(): Context {
+        return when (this) {
+            is Context -> this
+            is Fragment -> requireContext()
+            else -> throw IllegalStateException("无效的 LifecycleOwner")
+        }
+    }
     companion object{
         private const val LogTag = "CanComponent"
     }

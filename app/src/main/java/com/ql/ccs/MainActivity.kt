@@ -11,10 +11,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding  // Binding 类名由布局文件名自动生成
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // 初始化 ViewBinding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // 初始化碎片
         initFragment()
         // 注册Lifecycle监听
         lifecycle.addObserver(CanComponent())

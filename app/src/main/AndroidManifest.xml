@@ -18,7 +18,7 @@
         android:theme="@style/Theme.ChillCarJetpack"
         tools:targetApi="31">
         <service
-            android:name=".pages.floatWindow.FloatingWindowService"
+            android:name=".views.floatWindow.FloatingWindowService"
             android:enabled="true"
             android:exported="true" />
 
