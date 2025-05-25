@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- custom_progress_bar.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="20dp"/> <!-- 设置进度条圆角半径 -->
+            <solid android:color="#CCCCCC"/> <!-- 设置背景颜色 -->
+        </shape>
+    </item>
+<!--    <solid android:color="@color/navigation_bar_selected"/> &lt;!&ndash; 设置进度条颜色 &ndash;&gt;-->
+    <item android:id="@android:id/progress">
+        <clip>
+            <layer-list>
+                <item>
+                    <shape>
+                        <corners android:radius="20dp"/> <!-- 设置进度条内部圆角半径 -->
+                        <solid android:color="#00BCD4"/> <!-- 设置进度条颜色 -->
+                    </shape>
+                </item>
+            </layer-list>
+        </clip>
+    </item>
+</layer-list>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- 设置背景颜色为半透明白色 -->
+    <solid android:color="@color/navigation_bar_background_transparent" />
+    <!-- 设置背景颜色为透明 -->
+    <corners android:radius="20dp" /> <!-- 设置圆角半径 -->
+<!--    <stroke-->
+<!--        android:width="2dp"-->
+<!--        android:color="#000000" /> -->
+<!--    &lt;!&ndash; 设置边框宽度和颜色 &ndash;&gt;-->
+<!--    <padding-->
+<!--        android:left="16dp"-->
+<!--        android:top="16dp"-->
+<!--        android:right="16dp"-->
+<!--        android:bottom="16dp" />-->
+<!--    &lt;!&ndash; 设置内边距 &ndash;&gt;-->
+<!--    <bitmap-->
+<!--        android:src="@drawable/background_day"-->
+<!--        android:gravity="center" />-->
+<!--    &lt;!&ndash; 设置背景图片和对齐方式 &ndash;&gt;-->
+</shape>

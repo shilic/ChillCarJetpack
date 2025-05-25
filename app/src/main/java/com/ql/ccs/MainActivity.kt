@@ -6,13 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.ql.ccs.databinding.ActivityMainBinding
-import quickCanResolver.core.CanIo
-import quickCanResolver.core.CanListenService
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding  // Binding 类名由布局文件名自动生成
-    /** 初始化CAN监听 */
-    private val canListenService : CanListenService = CanListenImp()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // 初始化 ViewBinding
@@ -20,13 +16,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         // 初始化碎片
         initFragment()
-        // 注册回调函数
-        CanIo.getInstance().register(canListenService)
+        // 注册Lifecycle监听
+        lifecycle.addObserver(CanComponent())
+        //val canListenService : CanListenService = CanComponent()
+        //CanIo.getInstance().register(canListenService)
     } // onCreate
 
     override fun onDestroy() {
         super.onDestroy()
-        CanIo.getInstance().unRegisterCanListener()
+        //CanIo.getInstance().unRegisterCanListener()
     }
 
 

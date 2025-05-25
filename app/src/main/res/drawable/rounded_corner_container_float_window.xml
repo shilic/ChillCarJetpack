@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="20dp" /> <!-- 设置圆角半径 -->
+    <solid android:color="#CC161F33" /> <!-- 设置背景颜色 #D93F3F3F -->
+<!--    navigation_bar_pressed_transparent   navigation_bar_pressed -->
+</shape>
