@@ -5,7 +5,7 @@ import android.mcu.McuManager;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.ql.ccs.tool.KtToolKt;
+import com.ql.ccs.tool.NumberToolKt;
 
 import java.util.Arrays;
 
@@ -33,7 +33,7 @@ public class McuAdapter implements McuService  {
         int[] id_ = SLCTool.intTo4BytesI(canId, SLCTool.DataType.Intel); //0x1898_2418。  18 98 24 18 将ID变成数组形式
         System.arraycopy(id_, 0, mcuData, 0, 4); //存入ID; [ 18,24,98,18,   0,   0,0,0,0,  0,0,0,0, ] //高位放高位，故反向
         mcuData[4] = 8;  // 存入长度8 , [ 18,24,98,18,  8,  0,0,0,0,  0,0,0,0, ]
-        int[] frame8 = KtToolKt.toIntArray(data8); // java可以调用扩展函数吗？
+        int[] frame8 = NumberToolKt.toIntArray(data8); // java可以调用扩展函数吗？
         System.arraycopy(frame8, 0, mcuData, 5,8); //存入 8位byte的数据 frame // [ 18,24,98,18,  8,  2,3E,F,0,  0,0,0,0, ]
         mcuCan.sendCanCommand(mcuData, mcuData.length);
     }

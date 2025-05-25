@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/myProgressBarContainer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/my_progress_bar_background"
+    >
+    <TextView
+        android:id="@+id/myProgressBarDisplay"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="100"
+        android:background="@drawable/my_progress_bar_display"
+        >
+    </TextView>
+    <TextView
+        android:id="@+id/myProgressBarUnDisplay"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="100"
+        android:background="@drawable/my_progress_bar_background"
+        >
+    </TextView>
+
+</LinearLayout>

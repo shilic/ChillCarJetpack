@@ -10,7 +10,7 @@ import java.io.InputStream
 * @param dot 保留的小数点位数
 * @return 返回只保留一位小数的字符串
 */
-fun Double.toStr(dot : Int): String {
+fun Double.toStr(dot : Int = 1): String {
     val patternSb = StringBuilder()
     patternSb.append("0.")
     val dot1 : Int = if (dot <= 0) {

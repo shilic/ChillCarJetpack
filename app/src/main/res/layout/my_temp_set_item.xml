@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/work_item_tempSet"
+    android:padding="5dp"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_corner_container">
+    <ImageView
+        android:id="@+id/work_item_tempSet_lower"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="7dp"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/btn_selector_lower"/>
+    <FrameLayout
+        android:layout_width="200dp"
+        android:layout_height="28dp"
+        android:layout_centerInParent="true">
+        <com.ql.ccs.views.myComponent.MyProgressBar
+            android:id="@+id/work_item_tempSet_Progress"
+            style="@style/CustomProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:max="100" />
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/work_item_tempSet_value_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/work_item_tempSet_increase"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp"
+        android:src="@drawable/btn_selector_increase"/>
+
+</RelativeLayout>

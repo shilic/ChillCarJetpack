@@ -132,7 +132,7 @@
         android:layout_marginVertical="10dp"
         android:layout_marginStart="7dp"
         android:layout_toEndOf="@+id/frag_display_hint">
-        <com.ql.ccs.views.myLayout.WorkModeSwitch
+        <com.ql.ccs.views.myComponent.WorkModeSwitch
             android:id="@+id/display_workMode_container1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

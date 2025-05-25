@@ -1,4 +1,4 @@
-package com.ql.ccs.views.myLayout
+package com.ql.ccs.views.myComponent
 
 import android.app.Activity
 import android.content.Context
@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import com.ql.ccs.R
-import com.ql.ccs.databinding.LayoutWorkModeSwitchBinding
+import com.ql.ccs.databinding.MyWorkModeSwitchBinding
 import com.ql.ccs.viewUtil.CustomAlertDialog
 import com.ql.ccs.viewUtil.setButtonDelayed
 
@@ -15,10 +15,7 @@ import com.ql.ccs.viewUtil.setButtonDelayed
  * 工作模式切换小模块，切换制冷、制热、通风
  */
 class WorkModeSwitch (context: Context, attrs: AttributeSet? = null) :  LinearLayout(context, attrs) , View.OnClickListener {
-    private val binding = LayoutWorkModeSwitchBinding.inflate(LayoutInflater.from(context), this, true)
-    // 定义回调接口
-    var onConfirmAction: (() -> Unit)? = null
-    var onCancelAction: (() -> Unit)? = null
+    private val binding = MyWorkModeSwitchBinding.inflate(LayoutInflater.from(context), this, true)
     /** 刷新工作模式开关的样式为制热  */
     fun setWarmWork() {
         binding.workModeWarmImg.setBackgroundResource(R.drawable.rounded_corner_item_warm)
