@@ -1,9 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.ChillCarJetpack" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
-
+<!--    <style name="Base.Theme.ChillCarJetpack" parent="Theme.Material3.Dark.NoActionBar">-->
+<!--    </style>-->
     <style name="Theme.ChillCarJetpack" parent="Base.Theme.ChillCarJetpack" />
+    <!-- 浅色主题 -->
+<!--    <style name="Theme.YourApp.Light" parent="Theme.Material3.Light">-->
+<!--        &lt;!&ndash; 其他配置 &ndash;&gt;-->
+<!--    </style>-->
 </resources>
