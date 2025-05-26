@@ -12,14 +12,11 @@ import com.ql.ccs.databinding.MyProgressBarBinding
 class MyProgressBar (context: Context?, attrs: AttributeSet? = null): LinearLayout (context, attrs) {
     private val binding = MyProgressBarBinding.inflate(LayoutInflater.from(context), this, true)
     /** 进度条最大长度 */
-    var maxLength = 100
-    /** 当前进度 */
+    private var maxLength = 100
+    /** 仅供外部读取进度条试用，设置进度条请使用 setProgress方法 */
     var progress = 0
-        /** 供外部使用，设置进度条进度 */
-        set(value) {
-            field = value
-            checkProgress()
-        }
+        private set
+
     /** 组件的宽度 */
     private var width = 0
     /**  组件的高度 */
@@ -36,7 +33,7 @@ class MyProgressBar (context: Context?, attrs: AttributeSet? = null): LinearLayo
             this.maxLength = maxLength
             checkProgress()
         }
-    /** 设置组件宽度 */
+    /** 供外部使用，设置组件宽度 */
     var progressWidth: Int
         get() = width
         set(width) {
@@ -45,7 +42,7 @@ class MyProgressBar (context: Context?, attrs: AttributeSet? = null): LinearLayo
             containerParams.width = width
             binding.myProgressBarContainer.layoutParams = containerParams
         }
-    /** 设置组件高度 */
+    /** 供外部使用，设置组件高度 */
     var progressHeight: Int
         get() = height
         set(height) {
@@ -58,8 +55,12 @@ class MyProgressBar (context: Context?, attrs: AttributeSet? = null): LinearLayo
         val layoutParams =binding.myProgressBarUnDisplay .layoutParams as LayoutParams
         unDisplayWeight = layoutParams.weight
     }
-
-    /** 检查进度条参数 */
+    /** 供外部使用 , 用于设置进度条长度*/
+    fun setProgress(progressValue : Int) {
+        this.progress = progressValue
+        checkProgress()
+    }
+    /** 检查进度条参数，并设置进度。 */
     private fun checkProgress() {
         if (maxLength <= 2) {
             maxLength = 100
