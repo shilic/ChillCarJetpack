@@ -3,21 +3,26 @@ package com.ql.ccs
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.ql.ccs.can.CanComponent
+import com.ql.ccs.viewModel.CanViewModel
 import com.ql.ccs.databinding.ActivityMainBinding
+import quickCanResolver.core.CanIo
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding  // Binding 类名由布局文件名自动生成
+    private lateinit var binding : ActivityMainBinding
+    private lateinit var canViewModel : CanViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initFragment()
+        canViewModel = ViewModelProvider(this)[CanViewModel::class.java]
         // 注册Lifecycle监听
-        lifecycle.addObserver(CanComponent())
-        //val canListenService : CanListenService = CanComponent()
-        //CanIo.getInstance().register(canListenService)
+        lifecycle.addObserver(CanComponent(canViewModel, CanIo.getInstance()))
+        //CanIo.getInstance().register{canId, data8 -> // TODO("这里监听到最新数据，根据不同 canId 使用CanIo.Manager().createNewModel(clazzName) 即可拿取最新解析好的数据模型") }
     } // onCreate
 
     override fun onDestroy() {

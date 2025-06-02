@@ -4,8 +4,9 @@ import android.app.Application
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ProcessLifecycleOwner
+import com.ql.ccs.can.CanComponentInit
 import com.ql.ccs.dataModel.cabin.cabinType.coldCabin.EMB1
-import com.ql.ccs.mcu.McuAdapter
+import com.ql.ccs.can.mcu.McuAdapter
 import quickCanResolver.core.CanIo
 
 class QLApplication : Application() {

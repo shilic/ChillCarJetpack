@@ -24,52 +24,70 @@ class WorkModeSwitch (context: Context, attrs: AttributeSet? = null) :  LinearLa
     /** 设置通风的事件 ，在这里发送报文设置状态*/
     var setFanEvent : (()->Unit)? = null
     init {
+        setNotWork()
         /** 刷新工作模式开关的样式为制冷  */
         binding.workModeColdImg.setOnClickListener {
-            binding.workModeWarmImg.setBackgroundResource(R.drawable.rounded_corner_item_unselect)
-            binding.workModeColdImg.setBackgroundResource(R.drawable.rounded_corner_item_cold)
-            binding.workModeFanImg.setBackgroundResource(R.drawable.rounded_corner_item_unselect)
+            setDelayedEnable()
+            setColdWork()
             setClodEvent?.invoke()
         }
         /** 刷新工作模式开关的样式为制热  */
         binding.workModeWarmImg.setOnClickListener {
-            binding.workModeWarmImg.setBackgroundResource(R.drawable.rounded_corner_item_warm)
-            binding.workModeColdImg.setBackgroundResource(R.drawable.rounded_corner_item_unselect)
-            binding.workModeFanImg.setBackgroundResource(R.drawable.rounded_corner_item_unselect)
+            setDelayedEnable()
+            setWarmWork()
             setWarmEvent?.invoke()
         }
         /** 刷新工作模式开关的样式为通风  */
         binding.workModeFanImg.setOnClickListener {
-            binding.workModeWarmImg.setBackgroundResource(R.drawable.rounded_corner_item_unselect)
-            binding.workModeColdImg.setBackgroundResource(R.drawable.rounded_corner_item_unselect)
-            binding.workModeFanImg.setBackgroundResource(R.drawable.rounded_corner_item_fan)
+            setDelayedEnable()
+            setFanWork()
             setFanEvent?.invoke()
         }
     }
 
-
-
-    fun setFanWork() {
-
+    /**
+     * 供外部使用，直接使用信号值设置组件样式 <br>
+     * 0x00 = 关闭;  <br>
+     * 0x01 = 制冷;  <br>
+     * 0x02 = 制热;  <br>
+     * 0x03 = 通风; <br>
+     */
+    fun setWorkMode(signalValue : Int) {
+        when(signalValue){
+            0 -> setNotWork()
+            1 -> setColdWork()
+            2 -> setWarmWork()
+            3 -> setFanWork()
+        }
+    }
+    private fun setWarmWork(){
+        binding.workModeWarmImg.setBackgroundResource(R.drawable.rounded_corner_item_warm)
+        binding.workModeColdImg.setBackgroundResource(R.drawable.rounded_corner_item_unselect)
+        binding.workModeFanImg.setBackgroundResource(R.drawable.rounded_corner_item_unselect)
+    }
+    private fun setColdWork(){
+        binding.workModeWarmImg.setBackgroundResource(R.drawable.rounded_corner_item_unselect)
+        binding.workModeColdImg.setBackgroundResource(R.drawable.rounded_corner_item_cold)
+        binding.workModeFanImg.setBackgroundResource(R.drawable.rounded_corner_item_unselect)
+    }
+    private fun setFanWork() {
+        binding.workModeWarmImg.setBackgroundResource(R.drawable.rounded_corner_item_unselect)
+        binding.workModeColdImg.setBackgroundResource(R.drawable.rounded_corner_item_unselect)
+        binding.workModeFanImg.setBackgroundResource(R.drawable.rounded_corner_item_fan)
     }
 
     /** 设置界面未选中模式  */
-    fun setNotWork() {
+    private fun setNotWork() {
         binding.workModeWarmImg.setBackgroundResource(R.drawable.rounded_corner_item_unselect)
         binding.workModeColdImg.setBackgroundResource(R.drawable.rounded_corner_item_unselect)
         binding.workModeFanImg.setBackgroundResource(R.drawable.rounded_corner_item_unselect)
     }
-
     /** 设置按键延时不可点击  */
-    fun setDelayedEnable() {
+    fun setDelayedEnable(){
         binding.workModeWarmImg.setButtonDelayed()
         binding.workModeColdImg.setButtonDelayed()
         binding.workModeFanImg.setButtonDelayed()
     }
-
-
-
-
     /** 刷新 工作状态开关 在两个碎片中的显示  */
     private fun refreshWorkModeSwitch() {
 //        if (embAc != null){
@@ -85,11 +103,17 @@ class WorkModeSwitch (context: Context, attrs: AttributeSet? = null) :  LinearLa
     /** 弹出未选配提示  */
     private fun warmConfigDialog() {
         // 检查上下文有效性
-        val validContext = context.takeIf { it is Activity && !it.isFinishing } ?: return
+        val validContext = context.takeIf { (it is Activity) && !it.isFinishing } ?: return
         // 弹出提示框
         CustomAlertDialog(validContext, "提醒", "该功能暂时没有配置").show()
     }
 
+    enum class WorkMode(val signalValue : Int) {
+        Close(0),
+        Cold(1),
+        Warm(2),
+        Fan(3)
+    }
     companion object {
         private const val LogTag = "工作模式切换开关"
     }

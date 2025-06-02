@@ -26,7 +26,25 @@ fun Double.toStr(dot : Int = 1): String {
     val decimalFormat = java.text.DecimalFormat(pattern)
     return decimalFormat.format(this)
 }
+fun Double?.toStr(dot : Int = 1): String {
+    if (this == null){
+        return "未知"
+    }
+    val patternSb = StringBuilder()
+    patternSb.append("0.")
+    val dot1 : Int = if (dot <= 0) {
+        1
+    }else{
+        dot
+    }
+    for (i in 0 until dot1) {
+        patternSb.append("0")
+    }
 
+    val pattern = patternSb.toString()
+    val decimalFormat = java.text.DecimalFormat(pattern)
+    return decimalFormat.format(this)
+}
 /**
  * 解析一个位于资产目录下的文件，并且自动关闭文件
  */

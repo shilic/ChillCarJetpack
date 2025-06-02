@@ -1,230 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frag_display_bar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/navigation_bar_background_transparent"
-    tools:context="views.bar.TopFragment">
+<layout>
+    <!--    使用数据绑定-->
+    <data>
+        <!--        导入静态工具类-->
+        <import
+            alias="NumberToolKt"
+            type="com.ql.ccs.tool.NumberToolKt"/>
+        <variable
+            name="emb1"
+            type="com.ql.ccs.dataModel.cabin.cabinType.coldCabin.EMB1" />
+        <variable
+            name="emb3"
+            type="com.ql.ccs.dataModel.cabin.cabinType.coldCabin.EMB3" />
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/frag_display_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/navigation_bar_background_transparent"
+        tools:context="views.bar.TopFragment">
 
-    <TextView
-        android:id="@+id/frag_display_hint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginVertical="30dp"
-        android:layout_marginStart="6dp"
-        android:gravity="center"
-        android:text="制冷机组"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        />
-    <LinearLayout
-        android:id="@+id/display_defrost_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginStart="6dp"
-        android:layout_marginVertical="10dp"
-        android:layout_toEndOf="@+id/display_workMode_container"
-        >
-        <ImageView
-            android:id="@+id/display_defrost"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/rounded_corner_container"
-            android:contentDescription="除霜"
-            android:padding="9dp"
-            android:src="@drawable/ic_defrost_off2"
-            />
         <TextView
-            android:id="@+id/defrost_status_tv"
+            android:id="@+id/frag_display_hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="除霜状态"
-            android:textAllCaps="true"
-            android:layout_gravity="center"
+            android:layout_alignParentStart="true"
+            android:layout_marginVertical="30dp"
+            android:layout_marginStart="6dp"
             android:gravity="center"
+            android:text="制冷机组"
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="24sp"
             />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/display_sterilization_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginStart="6dp"
-        android:layout_marginVertical="10dp"
-        android:layout_toEndOf="@+id/display_defrost_container"
-        >
-        <ImageView
-            android:id="@+id/display_sterilization"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/rounded_corner_container"
-            android:contentDescription="杀菌"
-            android:padding="9dp"
-            android:src="@drawable/ic_sterilization_off"
-            />
-        <TextView
-            android:id="@+id/sterilization_status_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="臭氧杀菌"
-            android:textAllCaps="true"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/display_fault_alarm_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginStart="2dp"
-        android:layout_marginVertical="10dp"
-        android:layout_toEndOf="@+id/display_sterilization_container"
-        >
-        <ImageView
-            android:id="@+id/display_fault_alarm_img"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:contentDescription="故障码"
-            android:padding="9dp"
-            android:src="@drawable/ic_sys_fault_level1"
-            />
-        <TextView
-            android:id="@+id/display_fault_alarm_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="一级故障"
-            android:textAllCaps="true"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/display_height_limit_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
-        android:layout_toEndOf="@+id/display_fault_alarm_container"
-        >
-        <ImageView
-            android:id="@+id/display_height_limit_img"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:contentDescription="限高"
-            android:padding="5dp"
-            android:src="@drawable/ic_height_limit_on"
-            />
-    </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/display_workMode_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
-        android:layout_marginStart="7dp"
-        android:layout_toEndOf="@+id/frag_display_hint">
-        <com.ql.ccs.views.myComponent.WorkModeSwitch
-            android:id="@+id/display_workMode_container1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" />
-    </FrameLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentEnd="true"
-        android:layout_marginVertical="10dp"
-        android:layout_marginEnd="10dp"
-        >
         <LinearLayout
-            android:id="@+id/display_valueShow"
+            android:id="@+id/display_defrost_container"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
-
-            android:background="@drawable/rounded_corner_container"
-
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="6dp"
+            android:layout_marginVertical="10dp"
+            android:layout_toEndOf="@+id/display_workMode_container"
             >
             <ImageView
-                android:id="@+id/display_valueShow_temp_img"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="7dp"
-                android:contentDescription="温度"
-                android:padding="7dp"
-                android:src="@drawable/ic_temperature0" />
-
+                android:id="@+id/display_defrost"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/rounded_corner_container"
+                android:contentDescription="除霜"
+                android:padding="9dp"
+                android:src="@drawable/ic_defrost_off2"
+                />
             <TextView
-                android:id="@+id/display_valueShow_temp_tv"
+                android:id="@+id/defrost_status_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:text="除霜状态"
+                android:textAllCaps="true"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="未知℃"
                 android:textColor="@color/white"
-                android:textSize="24sp" />
-            <ImageView
-                android:id="@+id/display_valueShow_wet_img"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="45dp"
-                android:contentDescription="湿度"
-                android:padding="7dp"
-                android:src="@drawable/ic_humidity2" />
-
-            <TextView
-                android:id="@+id/display_valueShow_wet_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginEnd="17dp"
-                android:gravity="center"
-                android:text="未知%"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
+                android:textSize="12sp"
+                />
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/display_sterilization_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="6dp"
+            android:layout_marginVertical="10dp"
+            android:layout_toEndOf="@+id/display_defrost_container"
+            >
+            <ImageView
+                android:id="@+id/display_sterilization"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/rounded_corner_container"
+                android:contentDescription="杀菌"
+                android:padding="9dp"
+                android:src="@drawable/ic_sterilization_off"
+                />
+            <TextView
+                android:id="@+id/sterilization_status_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="臭氧杀菌"
+                android:textAllCaps="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/display_fault_alarm_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="2dp"
+            android:layout_marginVertical="10dp"
+            android:layout_toEndOf="@+id/display_sterilization_container"
+            >
+            <ImageView
+                android:id="@+id/display_fault_alarm_img"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="故障码"
+                android:padding="9dp"
+                android:src="@drawable/ic_sys_fault_level1"
+                />
+            <TextView
+                android:id="@+id/display_fault_alarm_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="一级故障"
+                android:textAllCaps="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/display_height_limit_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_toEndOf="@+id/display_fault_alarm_container"
+            >
+            <ImageView
+                android:id="@+id/display_height_limit_img"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="限高"
+                android:padding="5dp"
+                android:src="@drawable/ic_height_limit_on"
+                />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/display_workMode_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_marginStart="7dp"
+            android:layout_toEndOf="@+id/frag_display_hint">
+            <com.ql.ccs.views.myComponent.WorkModeSwitch
+                android:id="@+id/display_workMode_container1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+        </FrameLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/temp_tv"
+            android:orientation="vertical"
+            android:layout_alignParentEnd="true"
+            android:layout_marginVertical="10dp"
+            android:layout_marginEnd="10dp"
+            >
+            <LinearLayout
+                android:id="@+id/display_valueShow"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="箱内温度"
-                android:textAllCaps="true"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:layout_marginStart="60dp"
-                />
-            <TextView
-                android:id="@+id/wet_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="箱内湿度"
-                android:textAllCaps="true"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:layout_toEndOf="@+id/temp_tv"
-                android:layout_marginStart="100dp"
-                />
-        </LinearLayout>
-    </LinearLayout>
+                android:layout_height="60dp"
+                android:orientation="horizontal"
 
-</RelativeLayout>
+                android:background="@drawable/rounded_corner_container"
+
+                >
+                <ImageView
+                    android:id="@+id/display_valueShow_temp_img"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="7dp"
+                    android:contentDescription="温度"
+                    android:padding="7dp"
+                    android:src="@drawable/ic_temperature0" />
+
+                <TextView
+                    android:id="@+id/display_valueShow_temp_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@{NumberToolKt.toStr(emb3.boxRecoveryAirTemp)+'℃'}"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+                <ImageView
+                    android:id="@+id/display_valueShow_wet_img"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="45dp"
+                    android:contentDescription="湿度"
+                    android:padding="7dp"
+                    android:src="@drawable/ic_humidity2" />
+
+                <TextView
+                    android:id="@+id/display_valueShow_wet_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="17dp"
+                    android:gravity="center"
+                    android:text="@{NumberToolKt.toStr(emb3.relativeHumidity)+'%'}"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/temp_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="箱内温度"
+                    android:textAllCaps="true"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:layout_marginStart="60dp"
+                    />
+                <TextView
+                    android:id="@+id/wet_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="箱内湿度"
+                    android:textAllCaps="true"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:layout_toEndOf="@+id/temp_tv"
+                    android:layout_marginStart="100dp"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>
