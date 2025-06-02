@@ -89,7 +89,7 @@ public class McuAdapter implements McuService  {
             // 拿到第三方的数据后， 最终回调了我自己写的监听函数。// 首先进行数据的解析。
             int canId = SLCTool.from4bytesToInt(Arrays.copyOfRange(rawData, 4, 8)  , SLCTool.DataType.Intel);
             byte[] data8 = Arrays.copyOfRange(rawData, 9, 17);
-            // 解码报文 ，这里就相当于把接收到的数据存入绑定好的数据模型中了
+            // 解码报文 ，这里就相当于把接收到的数据存入绑定好的数据模型中了 //注解的字段类型出错，数据类型必须是 int,byte,short,float,double 中的一个
             CanIo.Manager().deCode_B(canId, data8);
             // 再回调从 Activity 传入的回调函数
             canListener.listened(canId,data8);
