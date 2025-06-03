@@ -24,7 +24,7 @@ enum class EMBErrorCode(
     RefrigerantLowPresFlt( "系统制冷剂低压压力故障", 7, 3, MyViewIds.RefrigerantLowPresFltId ),
     CompDischargeTempHighFlt( "压缩机排气温度高故障", 8,  3, MyViewIds.CompDischargeTempHighFltId ),
     InverterFault("变频器故障", 9, 4, MyViewIds.InverterFaultId),
-    DC_DCFlt( "DC-DC故障", 11, 4, MyViewIds.DC_DCFltId),
+    DcdcFlt( "DC-DC故障", 11, 4, MyViewIds.DC_DCFltId),
     HighPresSensorFlt("高压压力传感器故障", 12, 2, MyViewIds.HighPresSensorFltId),
     CompExhaustTempSensorFlt("压缩机排气温度传感器故障", 14, 2, MyViewIds.CompExhaustTempSensorFltId),
     AreaATempSensorFlt("箱内A区温度传感器故障", 21, 1, MyViewIds.AreaATempSensorFltId),
@@ -57,12 +57,13 @@ enum class EMBErrorCode(
 
     companion object {
         fun getErrByCode(code: Int): EMBErrorCode {
-            for (fault in values()) {
-                if (fault.errorCode == code) {
-                    return fault
-                }
-            }
-            return NotDefine // If no matching fault code found
+            return values().firstOrNull { it.errorCode == code } ?: NotDefine
+//            for (fault in values()) {
+//                if (fault.errorCode == code) {
+//                    return fault
+//                }
+//            }
+//            return NotDefine // If no matching fault code found
         }
     }
 }

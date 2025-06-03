@@ -21,9 +21,12 @@ data class EMB1 (
      *  4-14：预留 ; 15：无效值未使用  */
     @CanBinding(messageId = Cabin2CCS1_ID, signalTag = "emb_workMode")
     var workMode: Int = 0,
-    /** 除霜阶段标志 ; <br></br>
-     * emb标准 : 0x00 = 除霜关闭 ;
-     * 0x01=  除霜准备 ; 0x02 = 除霜运行 ; 0x03  = 滴水 。除了0之外的状态都是除霜开启。  */
+    /** 除霜阶段标志 ; <br>
+     * emb标准 : 0x00 = 除霜关闭 ; <br>
+     * 0x01=  除霜准备 ;  <br>
+     * 0x02 = 除霜运行 ;  <br>
+     * 0x03  = 滴水 。 <br>
+     * 除了0之外的状态都是除霜开启。  <br> */
     @CanBinding(messageId = Cabin2CCS1_ID, signalTag = "emb_defrostStage")
     var defrostStage: Int = 0,
     /** 车辆碰撞预警状态 ;<br></br> emb : 0x00 = 大于1.5米，无防撞提示;

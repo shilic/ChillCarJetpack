@@ -28,6 +28,7 @@ class TopFragment : Fragment() {
             binding.emb1 = it
         }
         canViewModel.emb3LiveData.observe(viewLifecycleOwner) {
+            it.manageFaults()
             binding.emb3 = it
         }
     }

@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter
 ])
 data class EMB3(
     /** ----------故障码。-----<br>
-     * 0x00 = 无故障时 <br>
+    0x00 = 无故障时 <br>
     0x01 =1控制电源故障<br>
     0x02 =2箱内回风温度传感器故障<br>
     0x03 =3箱外环境温度传感器故障<br>
@@ -113,64 +113,77 @@ data class EMB3(
     var currentPower: Double? = null
 ) : CanCopyable<EMB3>, Cloneable  {
     /** 当前故障，键表示故障码，值表示故障码枚举  */
-    var currentErrorMap = HashMap<Int, EMBError?>()
+    var currentErrorMap = HashMap<Int, EMBError>()
     /** 历史故障，键表示故障码，值表示故障码枚举  */
-    var historyErrorMap = HashMap<Int, EMBError?>()
+    var historyErrorMap = HashMap<Int, EMBError>()
     /** 故障缓存，键表示故障码，值表示故障码枚举  */
-    var bufferErrorMap = HashMap<Int, EMBError?>()
+    var bufferErrorMap = HashMap<Int, EMBError>()
     /** 最高 故障等级，默认为 0 ,故障等级，1级故障不显示（但可查询），2级故障主界面显示，3级故障表示严重故障 , 4 非常严重故障 */
     var maxFaultLevel = 0
     /** 缓存 故障等级  */
     private var bufferErrLevel = 0
+    /** 故障管理器,负责处理并分析接受到的故障码 */
+    fun manageFaults(){
+        manageFaults(errCode)
+    }
     /**
      * 故障管理器,负责处理并分析接受到的故障码 , Cabin2CCS3_ID = 0x189A_1824
      * @param errCode 传入当前故障码
      */
     private fun manageFaults(errCode: Int) {
-        if (errCode == 97) { // 屏蔽97 远程通信模块故障
-            return
-        }
-        val fault: EMBError?
-        if (errCode > 0x00) {  // errCode != 0x00 如果发生了故障
-            if (errCode != 0xFF) { //如果故障码没有循环一圈，即表示正在发送故障码。遂向历史故障中添加故障码，向故障缓存中添加故障码
+//        if (errCode == 97) { // 屏蔽97 远程通信模块故障
+//            return
+//        }
+        val fault : EMBError
+        // errCode != 0x00 如果发生了故障
+        if (errCode > 0x00) {
+            // 如果故障码没有循环一圈，即表示正在发送故障码。遂向历史故障中添加故障码，向故障缓存中添加故障码
+            if (errCode != 0xFF) {
                 fault = EMBError(errCode)
-                val level = fault.errorLevel //获取故障等级
-                if (level > bufferErrLevel) {  //如果新的故障等级大于旧的故障等级
-                    bufferErrLevel = level //记录最高故障等级到缓存变量。
+                //获取故障等级
+                val level = fault.errorLevel
+                //如果新的故障等级大于旧的故障等级
+                if (level > bufferErrLevel) {
+                    //记录最高故障等级到缓存变量。
+                    bufferErrLevel = level
                 }
                 //在这里向故障码添加 故障发生的时间
                 // 获取当前日期和时间
                 val currentDateTime = LocalDateTime.now()
                 // 定义日期格式
-                val dateFormatter =
-                    DateTimeFormatter.ofPattern("yy-MM-dd HH:mm") // "yyyy-MM-dd HH:mm:ss"
+                val dateFormatter = DateTimeFormatter.ofPattern("yy-MM-dd HH:mm") // "yyyy-MM-dd HH:mm:ss"
                 // 格式化日期为字符串
                 val formattedDate = currentDateTime.format(dateFormatter)
                 fault.errTime = formattedDate
 
                 historyErrorMap[errCode] = fault
                 bufferErrorMap[errCode] = fault
-            } else {  // errCode ==0xFF , 故障码循环一圈
+            }
+            // errCode ==0xFF , 故障码循环一圈
+            else {
                 //如果循环一圈。首先,清空当前故障 。然后,将 故障缓存 中的故障码转移到 当前故障 中。最后,清空缓存
                 currentErrorMap.clear() //清空 当前故障
                 /* 有可能发生 0x00 0xFF循环发的情况，故，在操作前需要判断缓存不为 empty . */
                 //使用 putAll() 方法将源 Map 的所有映射关系添加到目标 Map 中之后，再使用 clear() 方法清空源 Map 不会影响目标 Map 中的内容。
                 // 这是因为 putAll() 方法只是复制了源 Map 的映射关系，而不是引用。所以，一旦映射关系复制到目标 Map 中，目标 Map 就独立于源 Map。
-                if (!bufferErrorMap.isEmpty()) {  //有故障码，并且故障缓存不为空
-                    currentErrorMap.putAll(bufferErrorMap) //将缓存中的故障 全部 添加到当前故障中
+                //有故障码，并且故障缓存不为空
+                if (bufferErrorMap.isNotEmpty()) {
+                    //将缓存中的故障 全部 添加到当前故障中
+                    currentErrorMap.putAll(bufferErrorMap)
                 } // else currentErrorMap.isEmpty() == true ;
                 bufferErrorMap.clear() //清空缓存
                 maxFaultLevel = bufferErrLevel // 将缓存的故障等级设置为当前故障等级。
                 bufferErrLevel = 0 //清空故障缓存，重新设置故障等级为 0 ; 以便于在下次记录最高故障等级的时候重新计算
             }
-        } //如果发生了故障
-        else if (errCode == 0x00) {  //  errCode == 0 没有发生故障。清空 当前故障 ，清空故障缓存。
+        }
+        //  errCode == 0 没有发生故障。清空 当前故障 ，清空故障缓存。
+        else if (errCode == 0x00) {
             Log.d("故障管理器", "故障信息为空")
-            maxFaultLevel = 0 //故障等级设置为0
+            //故障等级设置为0
+            maxFaultLevel = 0
             bufferErrLevel = 0
             currentErrorMap.clear()
             bufferErrorMap.clear() //清空缓存
-            //currentErrorMap.put(errCode,fault);
         } //没有发生故障
         //currentErrorMap.put(errCode,fault);
         Log.d("故障管理器", "添加故障码 , errCode = $errCode")

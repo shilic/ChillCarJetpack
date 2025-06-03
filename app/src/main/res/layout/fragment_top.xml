@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <!--    使用数据绑定-->
     <data>
         <!--        导入静态工具类-->
@@ -50,7 +50,9 @@
                 android:contentDescription="除霜"
                 android:padding="9dp"
                 android:src="@drawable/ic_defrost_off2"
+                app:defrostStageImg="@{emb1.defrostStage}"
                 />
+<!--            android:src="@drawable/ic_defrost_off2"-->
             <TextView
                 android:id="@+id/defrost_status_tv"
                 android:layout_width="wrap_content"
@@ -61,6 +63,7 @@
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="12sp"
+                app:defrostStageTv="@{emb1.defrostStage}"
                 />
         </LinearLayout>
         <LinearLayout
@@ -101,6 +104,7 @@
             android:layout_marginStart="2dp"
             android:layout_marginVertical="10dp"
             android:layout_toEndOf="@+id/display_sterilization_container"
+            app:errCodeVisible="@{emb3.maxFaultLevel}"
             >
             <ImageView
                 android:id="@+id/display_fault_alarm_img"
@@ -109,6 +113,7 @@
                 android:contentDescription="故障码"
                 android:padding="9dp"
                 android:src="@drawable/ic_sys_fault_level1"
+                app:errCodeImg="@{emb3.maxFaultLevel}"
                 />
             <TextView
                 android:id="@+id/display_fault_alarm_tv"
@@ -120,6 +125,7 @@
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="12sp"
+                app:errCodeTv="@{emb3.maxFaultLevel}"
                 />
         </LinearLayout>
         <LinearLayout
@@ -128,6 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
             android:layout_toEndOf="@+id/display_fault_alarm_container"
+            app:collisionWarnVisible="@{emb3.collisionRadarConfig}"
             >
             <ImageView
                 android:id="@+id/display_height_limit_img"
@@ -136,6 +143,7 @@
                 android:contentDescription="限高"
                 android:padding="5dp"
                 android:src="@drawable/ic_height_limit_on"
+                app:collisionWarnImg="@{emb1.collisionWarningSts}"
                 />
         </LinearLayout>
 
@@ -150,7 +158,9 @@
                 android:id="@+id/display_workMode_container1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                app:workModeSw = "@{emb1.workMode}"
+                />
         </FrameLayout>
         <LinearLayout
             android:layout_width="wrap_content"
