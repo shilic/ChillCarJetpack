@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         initFragment()
         canViewModel = ViewModelProvider(this)[CanViewModel::class.java]
         // 注册Lifecycle监听
-        lifecycle.addObserver(CanComponent(canViewModel, CanIo.getInstance()))
+        lifecycle.addObserver(CanComponent(canViewModel))
         //CanIo.getInstance().register{canId, data8 -> // TODO("这里监听到最新数据，根据不同 canId 使用CanIo.Manager().createNewModel(clazzName) 即可拿取最新解析好的数据模型") }
     } // onCreate
 
