@@ -58,3 +58,7 @@ lint/
 # 测试报告
 **/test-results/
 **/androidTests/**/outputs/
+
+
+# 自定义忽略文档
+#/app/src/main/assets/ptotocol/
