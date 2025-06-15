@@ -1,4 +1,4 @@
-package com.ql.ccs.bindingAdapters
+package com.ql.ccs.views.bindingAdapters
 
 import android.view.View
 import android.widget.ImageView
@@ -13,7 +13,7 @@ import com.ql.ccs.views.myComponent.WorkModeSwitch
  * 数据绑定适配器
  */
 @Suppress("unused")
-object FragTopBindingAdapters {
+object TopFragBindingAdapters {
     @BindingAdapter("workModeSw")
     @JvmStatic
     fun setWorkMode(workModeSwitch: WorkModeSwitch, signalValue : Int) {

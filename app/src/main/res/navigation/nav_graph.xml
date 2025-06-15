@@ -28,16 +28,16 @@
         android:name="com.ql.ccs.views.pages.FaultDetectionFragment"
         android:label="fault"
         tools:layout="@layout/fragment_fault_detection" />
-    <fragment
-        android:id="@+id/d0UnitInfoFrag"
-        android:name="com.ql.ccs.views.pages.UnitInfoFragment"
-        android:label="info"
-        tools:layout="@layout/fragment_unit_info" />
-    <fragment
-        android:id="@+id/f0UsingHelpFrag"
-        android:name="com.ql.ccs.views.pages.UsingHelpFragment"
-        android:label="help"
-        tools:layout="@layout/fragment_using_help" />
+<!--    <fragment-->
+<!--        android:id="@+id/d0UnitInfoFrag"-->
+<!--        android:name="com.ql.ccs.views.pages.UnitInfoFragment"-->
+<!--        android:label="info"-->
+<!--        tools:layout="@layout/fragment_unit_info" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/f0UsingHelpFrag"-->
+<!--        android:name="com.ql.ccs.views.pages.UsingHelpFragment"-->
+<!--        android:label="help"-->
+<!--        tools:layout="@layout/fragment_using_help" />-->
 
 
     <fragment
@@ -49,7 +49,7 @@
     <action android:id="@+id/action_global_a0SettingFrag2" app:destination="@id/a0SettingFrag"/>
     <action android:id="@+id/action_global_b0WorkStatusFrag" app:destination="@id/b0WorkStatusFrag"/>
     <action android:id="@+id/action_global_c0FaultDetectionFrag" app:destination="@id/c0FaultDetectionFrag"/>
-    <action android:id="@+id/action_global_d0UnitInfoFrag" app:destination="@id/d0UnitInfoFrag"/>
-    <action android:id="@+id/action_global_f0UsingHelpFrag" app:destination="@id/f0UsingHelpFrag"/>
+<!--    <action android:id="@+id/action_global_d0UnitInfoFrag" app:destination="@id/d0UnitInfoFrag"/>-->
+<!--    <action android:id="@+id/action_global_f0UsingHelpFrag" app:destination="@id/f0UsingHelpFrag"/>-->
 
 </navigation>

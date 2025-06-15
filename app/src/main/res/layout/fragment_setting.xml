@@ -1,202 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/frag_setting_page"
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    tools:context=".views.pages.SettingFragment">
-
-    <ScrollView
-        android:id="@+id/frag_set_Scroll_container"
-        android:layout_width="0dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--    使用数据绑定-->
+    <data>
+        <!--        导入静态工具类-->
+        <import
+            alias="Tool"
+            type="com.ql.ccs.tool.NumberToolKt"/>
+        <variable
+            name="emb1"
+            type="com.ql.ccs.dataModel.cabin.cabinType.coldCabin.EMB1" />
+        <variable
+            name="emb3"
+            type="com.ql.ccs.dataModel.cabin.cabinType.coldCabin.EMB3" />
+    </data>
+    <LinearLayout
+        android:id="@+id/frag_setting_page"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="6"
-        android:contentDescription="设置页面">
-        <LinearLayout
-            android:id="@+id/frag_set_Linear_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:contentDescription="设置页面"
-            android:padding="10dp">
-            <RelativeLayout
-                android:id="@+id/switch_item"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/item_background"
-                android:layout_marginBottom="15dp">
+        android:orientation="horizontal"
+        tools:context=".views.pages.SettingFragment">
 
-                <TextView
-                    android:id="@+id/switch_item_tv"
-                    style="@style/tv_white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:text="开关" />
-                <ImageView
-                    android:id="@+id/switch_item_img"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_switch_off2"
-                    android:layout_marginEnd="20dp" />
-            </RelativeLayout>
-            <!-- 必须设置 id，才能通过 View Binding 访问 -->
-            <include
-                android:id="@+id/work_mode_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/my_work_mode_item"
-                android:layout_marginBottom="15dp" />
-            <RelativeLayout
-                android:id="@+id/float_window_switch_item"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/item_background"
-                android:layout_marginBottom="15dp"
-                >
-                <TextView
-                    android:id="@+id/float_window_switch_item_tv"
-                    style="@style/tv_white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:text="悬浮窗"
-                    android:layout_alignParentStart="true"
-                    />
-                <ImageView
-                    android:id="@+id/float_window_switch_item_img"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_switch_off2"
-                    android:layout_marginEnd="20dp"
-                    />
-            </RelativeLayout>
+        <ScrollView
+            android:id="@+id/frag_set_Scroll_container"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:contentDescription="设置页面">
+
             <LinearLayout
-                android:id="@+id/sterilization_item_container"
-                android:orientation="vertical"
+                android:id="@+id/frag_set_Linear_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/item_background"
-                android:layout_marginBottom="15dp">
+                android:contentDescription="设置页面"
+                android:orientation="vertical"
+                android:padding="10dp">
+
                 <RelativeLayout
-                    android:id="@+id/sterilization_item_container1"
+                    android:id="@+id/switch_item"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    >
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/item_background">
+
                     <TextView
-                        android:id="@+id/sterilization_item_tv"
+                        android:id="@+id/switch_item_tv"
+                        style="@style/tv_white"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:text="消毒开关"
+                        android:layout_height="match_parent"
                         android:layout_alignParentStart="true"
-                        style="@style/tv_white"/>
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="开关" />
+
                     <ImageView
-                        android:id="@+id/sterilization_item_sw_btn"
+                        android:id="@+id/switch_item_img"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="20dp"
-                        android:gravity="center"
                         android:src="@drawable/ic_switch_off2"
-                        />
+                        app:switchSts="@{emb1.workMode}" />
                 </RelativeLayout>
-                <RelativeLayout
-                    android:id="@+id/sterilization_item_valueSet_container2"
-                    android:layout_gravity="center"
+                <!-- 必须设置 id，才能通过 View Binding 访问 -->
+                <include
+                    android:id="@+id/work_mode_container"
+                    layout="@layout/my_work_mode_item"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    app:emb1="@{emb1}" />
+
+                <RelativeLayout
+                    android:id="@+id/float_window_switch_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/item_background">
 
                     <TextView
-                        android:id="@+id/sterilization_item_valueSet_tv"
+                        android:id="@+id/float_window_switch_item_tv"
                         style="@style/tv_white"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_alignParentStart="true"
-                        android:layout_margin="20dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginEnd="20dp"
                         android:layout_marginBottom="20dp"
-                        android:text="消毒时长" />
-                    <LinearLayout
-                        android:id="@+id/sterilization_item"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="60dp"
+                        android:text="悬浮窗" />
+
+                    <ImageView
+                        android:id="@+id/float_window_switch_item_img"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginVertical="8dp"
                         android:layout_marginEnd="20dp"
-                        android:gravity="center"
-                        android:background="@drawable/rounded_corner_container"
-                        >
-                        <TextView
-                            android:id="@+id/sterilization_item_5min"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="15dp"
-                            android:paddingEnd="5dp"
-                            android:text="5分钟"
-                            style="@style/tv_white"
-                            android:background="@drawable/rounded_corner_item_unselect"
-                            />
-                        <TextView
-                            android:id="@+id/sterilization_item_10min"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingHorizontal="5dp"
-                            android:text="10分钟"
-                            style="@style/tv_white"
-                            android:background="@drawable/rounded_corner_item_unselect"
-                            />
-                        <TextView
-                            android:id="@+id/sterilization_item_30min"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingHorizontal="5dp"
-                            android:text="30分钟"
-                            style="@style/tv_white"
-                            android:background="@drawable/rounded_corner_item_unselect"
-                            />
-                        <TextView
-                            android:id="@+id/sterilization_item_always"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:paddingHorizontal="8dp"
-                            android:text="常开"
-                            style="@style/tv_white"
-                            android:background="@drawable/rounded_corner_item_time"
-                            />
-                    </LinearLayout>
-
+                        android:src="@drawable/ic_switch_off2" />
                 </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/sterilization_item_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/item_background"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/sterilization_item_container1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/sterilization_item_tv"
+                            style="@style/tv_white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_margin="20dp"
+                            android:text="消毒开关" />
+
+                        <ImageView
+                            android:id="@+id/sterilization_item_sw_btn"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="20dp"
+                            android:gravity="center"
+                            android:src="@drawable/ic_switch_off2" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/sterilization_item_valueSet_container2"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/sterilization_item_valueSet_tv"
+                            style="@style/tv_white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_margin="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:text="消毒时长" />
+
+                        <LinearLayout
+                            android:id="@+id/sterilization_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="60dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginVertical="8dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/rounded_corner_container"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/sterilization_item_5min"
+                                style="@style/tv_white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/rounded_corner_item_unselect"
+                                android:paddingStart="15dp"
+                                android:paddingEnd="5dp"
+                                android:text="5分钟" />
+
+                            <TextView
+                                android:id="@+id/sterilization_item_10min"
+                                style="@style/tv_white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/rounded_corner_item_unselect"
+                                android:paddingHorizontal="5dp"
+                                android:text="10分钟" />
+
+                            <TextView
+                                android:id="@+id/sterilization_item_30min"
+                                style="@style/tv_white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/rounded_corner_item_unselect"
+                                android:paddingHorizontal="5dp"
+                                android:text="30分钟" />
+
+                            <TextView
+                                android:id="@+id/sterilization_item_always"
+                                style="@style/tv_white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/rounded_corner_item_time"
+                                android:paddingHorizontal="8dp"
+                                android:text="常开" />
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+
             </LinearLayout>
+        </ScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/frag_set_icon_container"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4">
 
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </LinearLayout>
-    </ScrollView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/frag_set_icon_container"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="4">
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</LinearLayout>
+    </LinearLayout>
+</layout>
